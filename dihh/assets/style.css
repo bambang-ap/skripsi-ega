@@ -1,0 +1,21 @@
+html, body {
+  height: 100%;
+}
+
+.bg-base {
+  background-color: #005a87;
+}
+
+label input {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  outline: none;
+}
+
+.form-login form {
+  background-color: grey;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,1 @@
+<footer style="color: white; background-color: black;" class="text-center p-2">&copy; 2020 Soundsee.net</footer>
