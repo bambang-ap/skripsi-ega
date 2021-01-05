@@ -15,13 +15,11 @@
 	<div class="flex flex-col h-full w-3/5">
 		<!-- list start -->
 		<div href="post.php?id=idnya" class="flex flex-col flex-1">
-			<a href="#">Kontak 1 | 0846467363764 | PT. wow</a>
-			<a href="#">Kontak 2</a>
-			<a href="#">Kontak 3</a>
-			<a href="#">Kontak 4</a>
-			<a href="#">Kontak 5</a>
-			<a href="#">Kontak 6</a>
-			<a href="#">Kontak 7</a>
+			<div class="">
+				<img src="assets/images/img.png">
+				<label>deskripsi file disini</label>
+			</div>
+			<button class="btn btn-primary" type="submit">SHARE</button>
 		</div>
 		<!-- list end -->
 		<? require('components/footer.php');?>
