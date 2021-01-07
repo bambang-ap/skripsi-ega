@@ -1,7 +1,7 @@
 <? error_reporting(0); ?>
 <div id="popular" class="list-posts">
 	<? for ($i=0; $i < count($data_post); $i++) { ?>
-	<a href="post.php?id=idnya" class="post">
+	<a href="post.php?id=idnya" class="post flex-col bg-blue">
 		<? if($withOwner){ ?>
 		<label>Owner</label>
 		<? } ?>
