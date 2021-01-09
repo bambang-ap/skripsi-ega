@@ -61,3 +61,6 @@ function get_client_ip() {
 			$ipaddress = 'UNKNOWN';
 	return $ipaddress;
 }
+function gen_unique_share_identifier() {
+	return get_client_ip()." - ".$_SERVER['HTTP_USER_AGENT'];
+}
