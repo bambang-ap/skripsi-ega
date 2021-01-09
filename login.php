@@ -13,6 +13,12 @@
 
 require('config/connect.php');
 
+session_start();
+$user = $_SESSION['user'];
+if ($user) {
+	echo "<script>alert('Please logout to access this page.'); location.href = 'home.php';</script>";
+}
+
 $doLogin = $_POST['doLogin'];
 
 if ($doLogin === 'on'){
@@ -21,7 +27,6 @@ if ($doLogin === 'on'){
 	
 	$check = $db->Execute('SELECT * FROM user WHERE user.password=? AND (username=? OR phoneNumber=?)', [$password, $username, $username]);
 	if ($check) {
-		session_start();
 		$_SESSION['user'] = $check;
 		header('location: home.php');
 	} else {

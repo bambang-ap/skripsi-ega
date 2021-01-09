@@ -13,6 +13,12 @@
 
 require('config/connect.php');
 
+session_start();
+$user = $_SESSION['user'];
+if ($user) {
+	echo "<script>alert('Please logout to access this page.'); location.href = 'home.php';</script>";
+}
+
 $doRegister = $_POST['doRegister'];
 
 if ($doRegister === 'on'){
