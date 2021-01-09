@@ -9,15 +9,32 @@
 	<title>Hello, world!</title>
 </head>
 
-<body class="h-full">
-	<?php
-	error_reporting(0);
-	if ($_POST['username']) {
+<?
+
+require('config/connect.php');
+
+$doLogin = $_POST['doLogin'];
+
+if ($doLogin === 'on'){
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	
+	$check = $db->Execute('SELECT * FROM user WHERE user.password=? AND (username=? OR phoneNumber=?)', [$password, $username, $username]);
+	if ($check) {
+		session_start();
+		$_SESSION['user'] = $check;
 		header('location: home.php');
+	} else {
+		echo "Login failed, please check Username or Password";
 	}
-	?>
+}
+
+?>
+
+<body class="h-full">
 	<div class="flex h-full justify-center items-center">
 		<form class="flex flex-col" method="POST" action="login.php">
+			<input type="checkbox" name="doLogin" checked class="hidden" />
 			<div class="input-group mb-3">
 				<span class="input-group">Username or Email</span>
 				<input type="text" name="username" class="form-control">
@@ -27,9 +44,9 @@
 				<input type="password" name="password" class="form-control">
 			</div>
 			<div class="flex justify-between">
-				<button type="submit" class="flex flex-1 btn btn-primary">Login</button>
-				<div class="p-1"></div>
 				<a href="register.php" class="flex flex-1 btn btn-primary">Register</a>
+				<div class="p-1"></div>
+				<button type="submit" class="flex flex-1 btn btn-primary">Login</button>
 			</div>
 		</form>
 	</div>

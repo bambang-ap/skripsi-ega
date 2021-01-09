@@ -8,6 +8,14 @@
 	<title>Hello, world!</title>
 </head>
 
+<?
+session_start();
+$loggedIn = $_SESSION['user'];
+if (!$loggedIn) {
+	header('location: 404.php');
+}
+?>
+
 <body>
 	<? require('components/header.php');?>
 	<div class="app">
