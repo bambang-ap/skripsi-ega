@@ -4,40 +4,47 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<? require('components/imports.php'); ?>
+	<?php require('components/imports.php'); ?>
 	<title>Hello, world!</title>
 </head>
 
-<?
+<?php
 include 'config/connect.php';
 session_start();
-$user = $_SESSION['user'];
-if (!$user) {
+
+print_r(get_client_ip());
+
+if (!isset($_GET['id'])){
 	header('location: 404.php');
 }
 
-$previous_week = strtotime("today");
-$start_week = strtotime("last monday", $previous_week);
-$end_week = strtotime("next monday", $start_week);
-$start_week = date("Y-m-d H:i:s", $start_week);
-$end_week = date("Y-m-d H:i:s", $end_week);
+$data = $db->Execute('SELECT * FROM eventData WHERE id=?', [$_GET['id']]);
 
-$data_post = $db->ExecuteAll("SELECT eventData.*, user.name as nameUser, user.id as idUser FROM eventData JOIN user ON eventData.idOwner=user.id WHERE created > ? ORDER BY shared DESC, created DESC LIMIT 3", [$start_week]);
 ?>
 
 <body>
-	<? require('components/header.php');?>
+	<?php require('components/header.php');?>
 	<div class="app">
-		<div class="banner"></div>
-		<h2 class="text-center pt-5 pb-5">POPULAR THIS WEEK</h2>
-		<?
-			$withOwner = true;
-			require('components/post-content.php');
-		?>
-		<a class="mt-5 pb-5 flex self-center" href="all-posts.php">
-			<h2>More events <i class="fa fa-chevron-right"></i></h2>
-		</a>
-		<? require('components/footer.php');?>
+		<div class="list-posts flex-1 flex-col">
+			<h2 class="text-center pb-5 c-light"><?php echo $data['eventName']; ?></h2>
+			<div class="flex flex-1">
+				<div class="w-1/3 mr-5 flex justify-center items-start" style="max-height: 15rem;">
+					<img style="border-radius: 5px; max-height: 15rem;" src="<?php echo 'post-file/'.$data['imagePath']; ?>" />
+				</div>
+				<div class="w-2/3">
+					<div class="flex mb-3  justify-between">
+						<h4 class="c-light">Created : <i><?php echo $data['created']; ?></i></h4>
+						<h4 class="c-light">Event Time : <i><?php echo $data['eventTime']; ?></i></h4>
+					</div>
+					<p class="c-light text-justify"><?php echo $data['eventDescription']; ?></p>
+				</div>
+			</div>
+			<div class="flex">
+				<a class="btn btn-link flex flex-1 c-light-hover items-center justify-center" href="<?php echo $data['youtubeLink']; ?>" target="_blank"><h4>Youtube video</h4></a>
+				<button class="flex flex-1 btn btn-primary justify-center items-center">SHARE</button>
+			</div>
+		</div>
+		<?php require('components/footer.php');?>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>

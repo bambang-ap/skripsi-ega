@@ -4,11 +4,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<? require('components/imports.php'); ?>
+	<?php require('components/imports.php'); ?>
 	<title>Hello, world!</title>
 </head>
 
-<?
+<?php
 require "config/connect.php";
 session_start();
 $user = $_SESSION['user'];
@@ -19,7 +19,7 @@ $data_contact = $db->ExecuteAll('SELECT * FROM contact WHERE idOwner=? ORDER BY 
 ?>
 
 <body>
-	<? require('components/header.php');?>
+	<?php require('components/header.php');?>
 	<div class="app">
 		<form class="flex form-post flex-col" method="POST" action="manage/add-contact.php">
 			<div>
@@ -42,7 +42,7 @@ $data_contact = $db->ExecuteAll('SELECT * FROM contact WHERE idOwner=? ORDER BY 
 			<button class="btn btn-primary flex self-end" type="submit">ADD</button>
 		</form>
 		<h2 class="text-center pb-5">YOUR CONTACTS</h2>
-		<?
+		<?php
 			require('components/list-contact.php');
 			require('components/footer.php');
 		?>

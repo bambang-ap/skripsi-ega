@@ -9,11 +9,12 @@
 	<title>Hello, world!</title>
 </head>
 
-<?
+<?php
 
 require('config/connect.php');
 
 session_start();
+error_reporting(0);
 $user = $_SESSION['user'];
 if ($user) {
 	echo "<script>alert('Please logout to access this page.'); location.href = 'home.php';</script>";
@@ -57,23 +58,23 @@ if ($doRegister === 'on'){
 			<input type="checkbox" name="doRegister" checked class="hidden" />
 			<div class="input-group mb-3">
 				<span class="input-group">Username</span>
-				<input type="text" class="form-control" name="username" value="<? echo $username; ?>" required />
+				<input type="text" class="form-control" name="username" value="<?php echo $username; ?>" required />
 			</div>
 			<div class="input-group mb-3">
 				<span class="input-group">Phone number</span>
-				<input type="text" class="form-control" name="phoneNumber" value="<? echo $phoneNumber; ?>" required />
+				<input type="text" class="form-control" name="phoneNumber" value="<?php echo $phoneNumber; ?>" required />
 			</div>
 			<div class="input-group mb-3">
 				<span class="input-group">First Name</span>
-				<input type="text" class="form-control" name="firstName" value="<? echo $firstName; ?>" required />
+				<input type="text" class="form-control" name="firstName" value="<?php echo $firstName; ?>" required />
 			</div>
 			<div class="input-group mb-3">
 				<span class="input-group">Last Name</span>
-				<input type="text" class="form-control" name="lastName" value="<? echo $lastName; ?>" required />
+				<input type="text" class="form-control" name="lastName" value="<?php echo $lastName; ?>" required />
 			</div>
 			<div class="input-group mb-3">
 				<span class="input-group">E-mail Address</span>
-				<input type="email" class="form-control" name="email" value="<? echo $email; ?>" required />
+				<input type="email" class="form-control" name="email" value="<?php echo $email; ?>" required />
 			</div>
 			<div class="input-group mb-3">
 				<span class="input-group">Password</span>

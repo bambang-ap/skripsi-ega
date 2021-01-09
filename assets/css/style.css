@@ -5,6 +5,22 @@
   background: #03b3ff;
 }
 
+.c-light {
+  color: white;
+}
+.c-light {
+  color: white;
+}
+.c-light-hover {
+  color: white;
+}
+.c-light-hover:hover {
+  color: white;
+}
+.c-blue {
+  color: #03b3ff;
+}
+
 body {
   display: flex;
   flex-direction: column;

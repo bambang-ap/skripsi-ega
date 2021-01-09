@@ -15,6 +15,23 @@ $light-tr: transparentize($light, .7);
 		background: $blue;
 	}
 }
+.c {
+	&-light {
+		color: $light;
+	}
+	&-light {
+		color: $light;
+		&-hover {
+			color: $light;
+			&:hover {
+				color: $light;
+			}
+		}
+	}
+	&-blue {
+		color: $blue;
+	}
+}
 @mixin wrapper-app {
 	padding: 3rem 10% 2rem;
 	display: flex;

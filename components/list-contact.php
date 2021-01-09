@@ -1,4 +1,4 @@
-<? error_reporting(0); ?>
+<?php error_reporting(0); ?>
 <script>
 	function searchContact($this) {
 		const f = $('.list-posts .post')
@@ -24,20 +24,20 @@
 			<input type="text" onkeyup="searchContact(this)" class="form-control" placeholder="Type here...">
 		</div>
 	</div>
-	<?
+	<?php
 	for ($i=0; $i < count($data_contact); $i++) { 
 		$data = $data_contact[$i]; ?>
 	<div class="post-wrapper">
 		<div class="post justify-between items-center bg-light">
 			<div class="content">
 				<h3>
-					<? echo $data['name']; ?>
+					<?php echo $data['name']; ?>
 				</h3>
 				<h4>
-					<? echo $data['phoneNumber']; ?>
+					<?php echo $data['phoneNumber']; ?>
 				</h4>
 				<div>
-					<? echo $data['companyName']; ?>
+					<?php echo $data['companyName']; ?>
 				</div>
 			</div>
 			<!-- <div class="flex flex-col">
@@ -46,5 +46,5 @@
 		</div> -->
 		</div>
 	</div>
-	<? } ?>
+	<?php } ?>
 </div>
