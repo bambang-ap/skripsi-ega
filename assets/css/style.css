@@ -63,7 +63,10 @@ body .app .list-posts .post {
   padding: 1rem;
   margin-bottom: 1rem;
 }
-body .app .list-posts .post .content img {
+body .app .list-posts .post .content .img-wrapper {
+  display: flex;
+  justify-content: center;
+  background: white;
   border-radius: 5px;
 }
 body .app .list-posts .post .content label.title {
@@ -98,12 +101,13 @@ body .app .form-post .img-wrapper .icon-wrapper {
   justify-content: center;
   align-items: center;
   transition: 0.25s;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(33, 80, 104, 0.75);
 }
 body .app .form-post .img-wrapper .icon-wrapper:hover {
   opacity: 1;
 }
 body .app .form-post .img-wrapper .icon-wrapper .icon {
+  cursor: pointer;
   font-size: 2rem;
 }
 

@@ -5,6 +5,7 @@ $link: #54595e;
 $blue: #03b3ff;
 $dark-blue: #215068;
 $dark-blue-tr: transparentize($dark-blue, .1);
+$dark-blue-tr-2: transparentize($dark-blue, .25);
 $light-tr: transparentize($light, .7);
 .bg {
 	&-light {
@@ -78,7 +79,10 @@ body {
 				padding: 1rem;
 				margin-bottom: 1rem;
 				.content {
-					img {
+					.img-wrapper {
+						display: flex;
+						justify-content: center;
+						background: $light;
 						border-radius: 5px;
 					}
 					label {
@@ -113,11 +117,12 @@ body {
 					justify-content: center;
 					align-items: center;
 					transition: .25s;
-					background: $light-tr;
+					background: $dark-blue-tr-2;
 					&:hover {
 						opacity: 1;
 					}
 					.icon {
+						cursor: pointer;
 						font-size: 2rem;
 					}
 				}

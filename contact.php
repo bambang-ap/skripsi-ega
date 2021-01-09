@@ -9,31 +9,33 @@
 </head>
 
 <?
+require "config/connect.php";
 session_start();
-$loggedIn = $_SESSION['user'];
-if (!$loggedIn) {
+$user = $_SESSION['user'];
+if (!$user) {
 	header('location: 404.php');
 }
+$data_contact = $db->ExecuteAll('SELECT * FROM contact WHERE idOwner=? ORDER BY name ASC', [$user['id']]);
 ?>
 
 <body>
 	<? require('components/header.php');?>
 	<div class="app">
-		<form class="flex form-post flex-col">
+		<form class="flex form-post flex-col" method="POST" action="manage/add-contact.php">
 			<div>
 				<h2 class="pb-5 text-center">ADD CONTACT</h2>
 				<div class="flex mb-2">
 					<div class="mr-1 w-1/3">
 						<label class="form-label">Name</label>
-						<input type="text" class="form-control" placeholder="Type here...">
+						<input type="text" class="form-control" name="name" placeholder="Type here..." required>
 					</div>
 					<div class="ml-1 mr-1 w-1/3">
 						<label class="form-label">Phone number</label>
-						<input type="text" class="form-control" placeholder="Type here...">
+						<input type="text" class="form-control" name="phoneNumber" placeholder="Type here..." required>
 					</div>
 					<div class="ml-1 w-1/3">
 						<label class="form-label">Company name</label>
-						<input type="text" class="form-control" placeholder="Type here...">
+						<input type="text" class="form-control" name="companyName" placeholder="Type here..." required>
 					</div>
 				</div>
 			</div>
@@ -41,7 +43,6 @@ if (!$loggedIn) {
 		</form>
 		<h2 class="text-center pb-5">YOUR CONTACTS</h2>
 		<?
-			$data_contact = [1,2,3,4,5,6];
 			require('components/list-contact.php');
 			require('components/footer.php');
 		?>

@@ -24,12 +24,20 @@
 			<input type="text" onkeyup="searchContact(this)" class="form-control" placeholder="Type here...">
 		</div>
 	</div>
-	<? for ($i=0; $i < count($data_contact); $i++) { ?>
+	<?
+	for ($i=0; $i < count($data_contact); $i++) { 
+		$data = $data_contact[$i]; ?>
 	<div class="post justify-between items-center bg-light">
 		<div class="content">
-			<h3>Mr. Joko Widodo</h3>
-			<h4>085757577575</h4>
-			<div>PT. Indonesia</div>
+			<h3>
+				<? echo $data['name']; ?>
+			</h3>
+			<h4>
+				<? echo $data['phoneNumber']; ?>
+			</h4>
+			<div>
+				<? echo $data['companyName']; ?>
+			</div>
 		</div>
 		<!-- <div class="flex flex-col">
 			<i class="fa fa-edit mb-2"></i>
