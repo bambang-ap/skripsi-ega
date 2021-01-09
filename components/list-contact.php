@@ -27,22 +27,24 @@
 	<?
 	for ($i=0; $i < count($data_contact); $i++) { 
 		$data = $data_contact[$i]; ?>
-	<div class="post justify-between items-center bg-light">
-		<div class="content">
-			<h3>
-				<? echo $data['name']; ?>
-			</h3>
-			<h4>
-				<? echo $data['phoneNumber']; ?>
-			</h4>
-			<div>
-				<? echo $data['companyName']; ?>
+	<div class="post-wrapper">
+		<div class="post justify-between items-center bg-light">
+			<div class="content">
+				<h3>
+					<? echo $data['name']; ?>
+				</h3>
+				<h4>
+					<? echo $data['phoneNumber']; ?>
+				</h4>
+				<div>
+					<? echo $data['companyName']; ?>
+				</div>
 			</div>
-		</div>
-		<!-- <div class="flex flex-col">
+			<!-- <div class="flex flex-col">
 			<i class="fa fa-edit mb-2"></i>
 			<i class="fa fa-trash"></i>
 		</div> -->
+		</div>
 	</div>
 	<? } ?>
 </div>

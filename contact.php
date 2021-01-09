@@ -23,19 +23,19 @@ $data_contact = $db->ExecuteAll('SELECT * FROM contact WHERE idOwner=? ORDER BY 
 	<div class="app">
 		<form class="flex form-post flex-col" method="POST" action="manage/add-contact.php">
 			<div>
-				<h2 class="pb-5 text-center">ADD CONTACT</h2>
+				<h2 class="pb-5">ADD CONTACT</h2>
 				<div class="flex mb-2">
 					<div class="mr-1 w-1/3">
 						<label class="form-label">Name</label>
-						<input type="text" class="form-control" name="name" placeholder="Type here..." required>
+						<input type="text" class="form-control" name="name" title="Name or alias" placeholder="e.g. Makmur Sukimin" required>
 					</div>
 					<div class="ml-1 mr-1 w-1/3">
 						<label class="form-label">Phone number</label>
-						<input type="text" class="form-control" name="phoneNumber" placeholder="Type here..." required>
+						<input type="text" class="form-control" name="phoneNumber" title="Please use country code without (+) plus sign" placeholder="e.g. 6285712344321" required>
 					</div>
 					<div class="ml-1 w-1/3">
 						<label class="form-label">Company name</label>
-						<input type="text" class="form-control" name="companyName" placeholder="Type here..." required>
+						<input type="text" class="form-control" name="companyName" title="Company name or else to identify this person" placeholder="e.g. PT. Makmur Jaya" required>
 					</div>
 				</div>
 			</div>
@@ -47,7 +47,6 @@ $data_contact = $db->ExecuteAll('SELECT * FROM contact WHERE idOwner=? ORDER BY 
 			require('components/footer.php');
 		?>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
 </html>

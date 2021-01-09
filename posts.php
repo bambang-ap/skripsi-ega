@@ -44,27 +44,27 @@ $data_post = $db->ExecuteAll('SELECT * FROM eventData WHERE idOwner=?', [$user['
 					<div class="w-1/3 mr-2 img-wrapper">
 						<input class="hidden" type="file" id="img-upload" accept="image/*" onchange="previewImage(this)" name="imgUpload" />
 						<img id="image-preview" src="assets/images/img.png">
-						<div class="icon-wrapper">
+						<div class="icon-wrapper" title="Image to become a thumbnail of your event">
 							<label for="img-upload"><i class="fa fa-edit icon"></i></label>
 						</div>
 					</div>
 					<div class="flex flex-col flex-1">
 						<div class="flex">
-							<div class="w-1/3 mr-1">
+							<div class="w-1/3 mr-1" title="Your event name">
 								<label class="form-label">Event name</label>
-								<input type="text" class="form-control" name="eventName" placeholder="Type here..." />
+								<input type="text" class="form-control" name="eventName" placeholder="e.g. Cuci Gudang iPhone" />
 							</div>
-							<div class="w-1/3 ml-1">
+							<div class="w-1/3 ml-1" title="Youtube link to describe your event by video">
 								<label class="form-label">Youtube link</label>
-								<input type="text" class="form-control" name="youtubeLink" placeholder="Type here..." />
+								<input type="text" class="form-control" name="youtubeLink" placeholder="e.g. https://www.youtube.com/watch?v=-1Tkar1nLWQ" />
 							</div>
-							<div class="w-1/3 ml-1">
+							<div class="w-1/3 ml-1" title="The date of your event">
 								<label class="form-label">Event Date</label>
-								<input type="datetime-local" class="form-control" name="eventTime" placeholder="Type here..." />
+								<input type="datetime-local" class="form-control" name="eventTime" />
 							</div>
 						</div>
-						<label class="form-label">Event description</label>
-						<textarea class="h-full form-control" name="eventDescription" placeholder="Type here..."></textarea>
+						<label class="form-label" title="Full description of your event">Event description</label>
+						<textarea class="h-full form-control" title="Full description of your event" name="eventDescription" placeholder="Type here..."></textarea>
 					</div>
 				</div>
 			</div>
@@ -77,7 +77,6 @@ $data_post = $db->ExecuteAll('SELECT * FROM eventData WHERE idOwner=?', [$user['
 			$_SESSION['uploadMessage'] = '';
 		?>
 	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
 </html>

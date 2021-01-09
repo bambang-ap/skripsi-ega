@@ -71,25 +71,37 @@ body {
 		}
 		.list-posts {
 			@include wrapper-app();
-			justify-content: space-between;
-			.post {
-				border-radius: 5px;
-				width: 32.5%;
-				display: flex;
-				padding: 1rem;
-				margin-bottom: 1rem;
-				.content {
-					.img-wrapper {
-						display: flex;
-						justify-content: center;
-						background: $light;
-						border-radius: 5px;
+			.post-wrapper {
+				padding: 0 .5rem 1rem;
+				width: 33.33%;
+				.post {
+					border-radius: 5px;
+					display: flex;
+					padding: 1rem;
+					.post-title {
+						font: {
+							size: x-large;
+							weight: 400;
+						}
 					}
-					label {
-						&.title {
-							font: {
-								size: 1.5rem;
-								weight: 500;
+					.content {
+						.img-wrapper {
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							border-radius: 5px;
+							height: 15rem;
+							background: $light;
+							img {
+								max-height: 15rem;
+							}
+						}
+						label {
+							&.title {
+								font: {
+									size: 1.5rem;
+									weight: 500;
+								}
 							}
 						}
 					}
