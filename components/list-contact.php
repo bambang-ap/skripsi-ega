@@ -8,7 +8,7 @@
 			const number = j.find('.content h4').html()
 			const company = j.find('.content div').html()
 			const dataSearch = [title, number, company].join('')
-			if (dataSearch.includes($this.value)) {
+			if (dataSearch.toLowerCase().includes($this.value.toLowerCase())) {
 				j.show()
 			} else {
 				j.hide()
