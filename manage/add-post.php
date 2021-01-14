@@ -41,10 +41,11 @@ if (!$user) {
 	if ($uploadOk === 1 && $uploadImage) {
 		$eventName = $_POST['eventName'];
 		$youtubeLink = $_POST['youtubeLink'];
+		$instagramLink = $_POST['instagramLink'];
 		$eventTime = $_POST['eventTime'];
 		$eventDescription = $_POST['eventDescription'];
 		$now = date("Y-m-d H:i:s");
-		$db->Execute('INSERT INTO eventData (idOwner, eventName, youtubeLink, eventTime, eventDescription, created, imagePath) VALUES (?,?,?,?,?,?,?)', [$user['id'], $eventName, $youtubeLink, $eventTime, $eventDescription, $now, $filename]);
+		$db->Execute('INSERT INTO eventData (idOwner, eventName, youtubeLink, instagramLink, eventTime, eventDescription, created, imagePath) VALUES (?,?,?,?,?,?,?,?)', [$user['id'], $eventName, $youtubeLink, $instagramLink, $eventTime, $eventDescription, $now, $filename]);
 		// print_r($db->error());
 		$_SESSION['uploadMessage'] = 'Success';
 	} else {

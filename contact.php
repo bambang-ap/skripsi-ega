@@ -31,7 +31,7 @@ $data_contact = $db->ExecuteAll('SELECT * FROM contact WHERE idOwner=? ORDER BY 
 					</div>
 					<div class="ml-1 mr-1 w-1/3">
 						<label class="form-label">Phone number</label>
-						<input type="text" class="form-control" name="phoneNumber" title="Please use country code without (+) plus sign" placeholder="e.g. 6285712344321" required>
+						<input type="number" class="form-control" name="phoneNumber" title="Please use country code without (+) plus sign" placeholder="e.g. 6285712344321" required>
 					</div>
 					<div class="ml-1 w-1/3">
 						<label class="form-label">Company name</label>

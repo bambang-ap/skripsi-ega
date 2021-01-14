@@ -10,6 +10,8 @@
 
 <?php
 
+error_reporting(0);
+
 include 'config/connect.php';
 
 session_start();
@@ -18,11 +20,7 @@ if (!isset($_GET['id'])) {
 	header('location: 404.php');
 }
 
-$data = $db->Execute('SELECT * FROM eventData WHERE id=?', [$_GET['id']]);
-
-if (!$data) {
-	header('location: 404.php');
-}
+$user = $_SESSION['user'];
 
 $identifier = gen_unique_share_identifier();
 $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -30,15 +28,53 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 ?>
 
 <script>
+	function closePopup(e) {
+		if (e && e.target.id === 'popup-wrapper') {
+			$('.popup').css('display', 'none')
+		}
+	}
+
+	function openPopup($this) {
+		if ($this) {
+			$('.popup').css('display', 'none')
+			var url = $($this).find('h4').text()
+			share(window.ref.replace('{number}', url))
+		} else {
+			$('.popup').css('display', 'flex')
+		}
+	}
+
 	function share($this) {
-		var ref = $this.getAttribute('data')
-		window.open(`share.php?link=<? echo base64_encode($actual_link); ?>&id=<?php echo $_GET['id']; ?>&from=<?php echo base64_encode($identifier); ?>&ref=${ref}`, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+		var ref = typeof $this === 'string' ? $this : $this.getAttribute('data')
+		if (ref.includes('{number}')) {
+			var loggedIn = <?php echo $user ? 'true' : 'false'; ?>;
+			if (loggedIn) {
+				window.ref = ref
+				openPopup()
+			} else {
+				alert('This feature is for logged user only')
+			}
+		} else {
+			window.open(`share.php?link=<? echo base64_encode($actual_link); ?>&id=<?php echo $_GET['id']; ?>&from=<?php echo base64_encode($identifier); ?>&ref=${ref}`, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+		}
 		return false
 	}
 </script>
 
 <body>
-	<?php require('components/header.php'); ?>
+	<div class="popup" id="popup-wrapper" onclick="closePopup(event)">
+		<?php
+			$data_contact = $db->ExecuteAll('SELECT * FROM contact WHERE idOwner=?', [$user['id']]);
+			require('components/list-contact.php');
+		?>
+	</div>
+	<?php
+	require('components/header.php');
+	$data = $db->Execute('SELECT * FROM eventData WHERE id=?', [$_GET['id']]);
+	if (!$data) {
+		header('location: 404.php');
+	}
+	?>
 	<div class="app">
 		<div class="list-posts post-detail flex-1 flex-col">
 			<h2 class="text-center pb-5 c-light"><?php echo $data['eventName']; ?></h2>
@@ -55,15 +91,23 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 					<div>Posted : <i><?php echo $data['created']; ?></i></div>
 					<div class="mt-1">Event Time : <i><?php echo $data['eventTime']; ?></i></div>
 				</div>
-				<?php if (isset($data['youtubeLink'])) { ?>
-				<a class="btn btn-danger flex items-center" href="<?php echo $data['youtubeLink']; ?>" target="_blank">
-					<i class="fa fa-youtube text-4xl"></i>
-					<label class="text-xl ml-2">View</label>
-				</a>
-				<?php } ?>
+				<div class="flex">
+					<?php if (!empty($data['youtubeLink'])) { ?>
+						<a class="btn btn-danger flex items-center ml-1 mr-1" href="<?php echo $data['youtubeLink']; ?>" target="_blank">
+							<i class="fa fa-youtube text-4xl"></i>
+							<label class="text-xl ml-2">View</label>
+						</a>
+					<?php } ?>
+					<?php if (!empty($data['instagramLink'])) { ?>
+						<a class="btn btn-primary flex items-center ml-1 mr-1" href="<?php echo $data['instagramLink']; ?>" target="_blank">
+							<i class="fa fa-instagram text-4xl"></i>
+							<label class="text-xl ml-2">View</label>
+						</a>
+					<?php } ?>
+				</div>
 				<div class="flex items-center">
 					<label class="text-xl">Share on</label>
-					<a class="ml-3 btn btn-success" href="javascript:void(0)" data="https://wa.me/6285717570370?text={sharer}" onclick="share(this)" title="Share on Whatsapp"><i class="text-4xl fa fa-whatsapp"></i></a>
+					<a class="ml-3 btn btn-success" href="javascript:void(0)" data="https://wa.me/{number}?text={sharer}" onclick="share(this)" title="Share on Whatsapp"><i class="text-4xl fa fa-whatsapp"></i></a>
 					<a class="ml-3 btn btn-info" href="javascript:void(0)" data="https://twitter.com/intent/tweet?text={sharer}" onclick="share(this)" title="Share on Twitter"><i class="text-4xl c-light fa fa-twitter"></i></a>
 					<a class="ml-3 btn btn-primary" href="javascript:void(0)" data="https://www.facebook.com/sharer/sharer.php?u={sharer}" onclick="share(this)" title="Share on Facebook"><i class="text-4xl fa fa-facebook-square"></i></a>
 				</div>
