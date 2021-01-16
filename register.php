@@ -22,30 +22,33 @@ if ($user) {
 
 $doRegister = $_POST['doRegister'];
 
-if ($doRegister === 'on'){
+if ($doRegister === 'on') {
 	$username = $_POST['username'];
 	$phoneNumber = $_POST['phoneNumber'];
 	$firstName = $_POST['firstName'];
 	$lastName = $_POST['lastName'];
-	$fullName = $firstName." ".$lastName;
+	$fullName = $firstName . " " . $lastName;
 	$email = $_POST['email'];
 	$password = $_POST['password'];
 	$confirmPassword = $_POST['confirmPassword'];
-	
+
 	$check = $db->Execute('SELECT * FROM user WHERE username=? OR phoneNumber=?', [$username, $phoneNumber]);
 	if ($check) {
-		echo "Username or Phone number is duplicate";
+		$alertType = "danger";
+		$alert = "Username or Phone number is duplicate";
 	} else {
 		if ($password === $confirmPassword && $password && $confirmPassword) {
 			$d = $db->Execute("INSERT INTO user (username, phoneNumber, name, email, password) VALUES (?,?,?,?,?)", [$username, $phoneNumber, $fullName, $email, $password]);
-			$username='';
-			$phoneNumber='';
-			$firstName='';
-			$lastName='';
-			$email='';
-			echo "Registration success";
+			$username = '';
+			$phoneNumber = '';
+			$firstName = '';
+			$lastName = '';
+			$email = '';
+			$alert = "Registration success";
+			$alertType = "success";
 		} else {
-			echo "Password note same";
+			$alertType = "danger";
+			$alert = "Password note same";
 		}
 	}
 }
@@ -53,7 +56,12 @@ if ($doRegister === 'on'){
 ?>
 
 <body class="h-full">
-	<div class="flex h-full justify-center items-center">
+	<div class="flex flex-col h-full justify-center items-center">
+		<?php if (isset($alertType)) { ?>
+			<div class="alert alert-<?php echo $alertType ?>" role="alert">
+				<?php echo $alert; ?>
+			</div>
+		<?php } ?>
 		<form class="flex flex-col" method="POST" action="register.php">
 			<input type="checkbox" name="doRegister" checked class="hidden" />
 			<div class="input-group mb-3">
