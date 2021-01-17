@@ -126,6 +126,7 @@ body {
 		}
 		.list-posts {
 			@include wrapper-app();
+			flex: 1;
 			.post-wrapper {
 				padding: 0 .5rem 1rem;
 				width: 33.33%;

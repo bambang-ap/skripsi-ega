@@ -108,6 +108,7 @@ body .app .list-posts {
   background-image: linear-gradient(0deg, rgba(33, 80, 104, 0.9), rgba(33, 80, 104, 0.9)), url("../images/bg.jpg");
   background-size: cover;
   background-position: center center;
+  flex: 1;
 }
 body .app .list-posts .post-wrapper {
   padding: 0 0.5rem 1rem;

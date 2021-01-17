@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php require('components/imports.php'); ?>
-	<title>Hello, world!</title>
+	<title>SOUNDSEE.NET </title>
 </head>
 
 <?php
@@ -41,7 +41,7 @@ $data_post = $db->ExecuteAll('SELECT * FROM eventData WHERE idOwner=? ORDER BY c
 					</div>
 				<?php } ?>
 				<div class="flex mb-2">
-					<div class="w-1/3 mr-2 img-wrapper">
+					<div class="w-1/3 mr-2 flex justify-center items-center img-wrapper">
 						<input class="hidden" type="file" id="img-upload" accept="image/*" onchange="previewImage(this)" name="imgUpload" />
 						<img id="image-preview" src="assets/images/img.png">
 						<div class="icon-wrapper" title="Image to become a thumbnail of your event">
@@ -67,6 +67,16 @@ $data_post = $db->ExecuteAll('SELECT * FROM eventData WHERE idOwner=? ORDER BY c
 							<div class="w-1/2 ml-1" title="Instagram link to describe your event by video. This field is optional">
 								<label class="form-label">Instagram link</label>
 								<input type="text" class="form-control" name="instagramLink" placeholder="e.g. https://www.instagram.com/p/CJ-5ChUheMm" />
+							</div>
+						</div>
+						<div class="flex">
+							<div class="w-1/2 mr-1" title="Twitter link to describe your event by video. This field is optional">
+								<label class="form-label">Twitter link</label>
+								<input type="text" class="form-control" name="twitterLink" placeholder="e.g. https://www.youtube.com/watch?v=-1Tkar1nLWQ" />
+							</div>
+							<div class="w-1/2 ml-1" title="Facebook link to describe your event by video. This field is optional">
+								<label class="form-label">Facebook link</label>
+								<input type="text" class="form-control" name="facebookLink" placeholder="e.g. https://www.instagram.com/p/CJ-5ChUheMm" />
 							</div>
 						</div>
 						<label class="form-label" title="Full description of your event">Event description</label>

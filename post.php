@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php require('components/imports.php'); ?>
-	<title>Hello, world!</title>
+	<title>SOUNDSEE.NET </title>
 </head>
 
 <?php
@@ -101,6 +101,18 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 					<?php if (!empty($data['instagramLink'])) { ?>
 						<a class="btn btn-primary flex items-center ml-1 mr-1" href="<?php echo $data['instagramLink']; ?>" target="_blank">
 							<i class="fa fa-instagram text-4xl"></i>
+							<label class="text-xl ml-2">View</label>
+						</a>
+					<?php } ?>
+					<?php if (!empty($data['twitterLink'])) { ?>
+						<a class="btn btn-danger flex items-center ml-1 mr-1" href="<?php echo $data['twitterLink']; ?>" target="_blank">
+							<i class="fa fa-twitter text-4xl"></i>
+							<label class="text-xl ml-2">View</label>
+						</a>
+					<?php } ?>
+					<?php if (!empty($data['facebookLink'])) { ?>
+						<a class="btn btn-primary flex items-center ml-1 mr-1" href="<?php echo $data['facebookLink']; ?>" target="_blank">
+							<i class="fa fa-facebook text-4xl"></i>
 							<label class="text-xl ml-2">View</label>
 						</a>
 					<?php } ?>

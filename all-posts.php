@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php require('components/imports.php'); ?>
-	<title>Hello, world!</title>
+	<title>SOUNDSEE.NET </title>
 </head>
 
 <?php
