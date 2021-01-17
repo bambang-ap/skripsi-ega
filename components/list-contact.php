@@ -1,17 +1,17 @@
 <?php error_reporting(0); ?>
 <script>
 	function searchContact($this) {
-		const f = $('.list-posts .post')
-		f.each(function(i) {
-			const j = $(f[i])
-			const title = j.find('.content h3').html()
-			const number = j.find('.content h4').html()
-			const company = j.find('.content div').html()
-			const dataSearch = [title, number, company].join('')
+		var components = $('.list-posts .post')
+		components.each(function(i) {
+			var selector = $(components[i])
+			var title = selector.find('.content h3').html()
+			var number = selector.find('.content h4').html()
+			var company = selector.find('.content div').html()
+			var dataSearch = [title, number, company].join('')
 			if (dataSearch.toLowerCase().includes($this.value.toLowerCase())) {
-				j.show()
+				selector.show()
 			} else {
-				j.hide()
+				selector.hide()
 			}
 			if ($this.value === '') j.show()
 		})

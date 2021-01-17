@@ -19,6 +19,7 @@ $start_week = date("Y-m-d H:i:s", $start_week);
 $end_week = date("Y-m-d H:i:s", $end_week);
 
 $data_post = $db->ExecuteAll("SELECT eventData.*, user.name as nameUser, user.id as idUser FROM eventData JOIN user ON eventData.idOwner=user.id WHERE created > ? ORDER BY shared DESC, created DESC LIMIT 3", [$start_week]);
+
 ?>
 
 <body>
