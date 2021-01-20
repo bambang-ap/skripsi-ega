@@ -1,18 +1,50 @@
 <!doctype html>
 <html lang="en" class="h-full">
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<?php require('components/imports.php'); ?>
-	<title>SOUNDSEE.NET </title>
-</head>
-
 <?php
 
 error_reporting(0);
 
 include 'config/connect.php';
+
+$data = $db->Execute('SELECT * FROM eventData WHERE id=?', [$_GET['id']]);
+if (!$data) {
+	header('location: 404.php');
+}
+
+?>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- HTML Meta Tags -->
+	<title>SOUNDSEE.NET - <?php echo $data['eventName']; ?></title>
+	<meta name="description" content="<?php echo $data['eventDescription']; ?>">
+
+	<!-- Google / Search Engine Tags -->
+	<meta itemprop="name" content="SOUNDSEE.NET - <?php echo $data['eventName']; ?>">
+	<meta itemprop="description" content="<?php echo $data['eventDescription']; ?>">
+	<meta itemprop="image" content="<?php echo 'post-file/' . $data['imagePath']; ?>">
+
+	<!-- Facebook Meta Tags -->
+	<meta property="og:url" content="http://soundsee.net">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="SOUNDSEE.NET - <?php echo $data['eventName']; ?>">
+	<meta property="og:description" content="<?php echo $data['eventDescription']; ?>">
+	<meta property="og:image" content="<?php echo 'post-file/' . $data['imagePath']; ?>">
+
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="SOUNDSEE.NET - <?php echo $data['eventName']; ?>">
+	<meta name="twitter:description" content="<?php echo $data['eventDescription']; ?>">
+	<meta name="twitter:image" content="<?php echo 'post-file/' . $data['imagePath']; ?>">
+
+	<!-- Meta Tags Generated via http://heymeta.com -->
+	<?php require('components/imports.php'); ?>
+</head>
+
+<?php
 
 session_start();
 
@@ -38,13 +70,13 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 		if ($this) {
 			$('.popup').css('display', 'none')
 			var url = $($this).find('h4').text()
-			share(window.ref.replace('{number}', url))
+			share(window.ref.replace('{number}', url), true)
 		} else {
 			$('.popup').css('display', 'flex')
 		}
 	}
 
-	function share($this) {
+	function share($this, isWa) {
 		var ref = typeof $this === 'string' ? $this : $this.getAttribute('data')
 		if (ref.includes('{number}')) {
 			var loggedIn = <?php echo $user ? 'true' : 'false'; ?>;
@@ -55,7 +87,9 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 				alert('This feature is for logged user only')
 			}
 		} else {
-			window.open(`share.php?link=<? echo base64_encode($actual_link); ?>&id=<?php echo $_GET['id']; ?>&from=<?php echo base64_encode($identifier); ?>&ref=${ref}`, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+			var link = isWa ? btoa(`Halo Sobat soundsee !!%0a%0aKita ada event menarik ni %0asayang untuk di lewatkan%0a%0auntuk informasi lebih detailnya%0aSilahkan klik : <? echo $actual_link; ?> ( soundsee official )%0adan jangan lupa untuk share ke teman-teman kalian.`) : '<? echo base64_encode($actual_link); ?>'
+			// console.log(link)
+			window.open(`share.php?link=${link}&id=<?php echo $_GET['id']; ?>&from=<?php echo base64_encode($identifier); ?>&ref=${ref}`, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
 		}
 		return false
 	}
@@ -64,8 +98,8 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 <body>
 	<div class="popup" id="popup-wrapper" onclick="closePopup(event)">
 		<?php
-			$data_contact = $db->ExecuteAll('SELECT * FROM contact WHERE idOwner=?', [$user['id']]);
-			require('components/list-contact.php');
+		$data_contact = $db->ExecuteAll('SELECT * FROM contact WHERE idOwner=?', [$user['id']]);
+		require('components/list-contact.php');
 		?>
 	</div>
 	<?php
