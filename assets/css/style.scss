@@ -15,6 +15,12 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+.none {
+	display: none;
+}
+.pointer {
+	cursor: pointer;
+}
 .bg {
 	&-light {
 		background: $light;

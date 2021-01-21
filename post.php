@@ -5,6 +5,8 @@
 
 error_reporting(0);
 
+session_start();
+
 include 'config/connect.php';
 
 $data = $db->Execute('SELECT * FROM eventData WHERE id=?', [$_GET['id']]);
@@ -45,8 +47,6 @@ if (!$data) {
 </head>
 
 <?php
-
-session_start();
 
 if (!isset($_GET['id'])) {
 	header('location: 404.php');
