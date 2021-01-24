@@ -1,5 +1,4 @@
 <?php
-error_reporting(0);
 $loggedIn = $_SESSION['user'];
 ?>
 <div class="header">
@@ -17,6 +16,5 @@ $loggedIn = $_SESSION['user'];
 		<?php } else { ?>
 			<a class="flex items-center btn btn-outline" href="login.php">LOGIN</a>
 		<?php } ?>
-		<!-- <a class="flex items-center btn btn-outline" href="home.php#popular">LOGIN</a> -->
 	</div>
 </div>

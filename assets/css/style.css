@@ -43,6 +43,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow: hidden;
 }
 body h1, body h2, body h3, body h4, body h5, body h6 {
   font-size: revert;
@@ -72,11 +73,11 @@ body .popup .list-posts {
   padding: 1rem;
   overflow-y: auto;
 }
-body .popup .list-posts .post-wrapper {
+body .popup .list-posts .post-wrapper, body.mobile .popup .list-posts .search-wrapper {
   cursor: pointer;
   border-bottom: 1px solid black;
 }
-body .popup .list-posts .post-wrapper .content {
+body .popup .list-posts .post-wrapper .content, body.mobile .popup .list-posts .search-wrapper .content {
   padding: 0.5rem 1rem;
 }
 body .popup .list-posts .search-wrapper > div {
@@ -97,10 +98,12 @@ body .header .menu a.icon {
   font-size: 2rem;
 }
 body .app {
+  height: 100%;
   background: #ededed;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: auto;
 }
 body .app .banner {
   min-height: 500px;
@@ -117,20 +120,37 @@ body .app .list-posts {
   background-position: center center;
   flex: 1;
 }
-body .app .list-posts .post-wrapper {
+body .app .list-posts .post-wrapper, body.mobile .app .list-posts .search-wrapper {
   padding: 0 0.5rem 1rem;
   width: 33.33%;
 }
-body .app .list-posts .post-wrapper .post {
+body .app .list-posts .post-wrapper .open-edit, body.mobile .app .list-posts .search-wrapper .open-edit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 1rem;
+  right: 1rem;
+  top: 0.25rem;
+}
+body .app .list-posts .post-wrapper .open-edit .command, body.mobile .app .list-posts .search-wrapper .open-edit .command {
+  overflow: hidden;
+  color: white;
+  border-radius: 5px;
+  background: #215068;
+}
+body .app .list-posts .post-wrapper .open-edit .command > *, body.mobile .app .list-posts .search-wrapper .open-edit .command > * {
+  margin: 0.5rem;
+}
+body .app .list-posts .post-wrapper .post, body.mobile .app .list-posts .search-wrapper .post {
   border-radius: 5px;
   display: flex;
   padding: 1rem;
 }
-body .app .list-posts .post-wrapper .post .post-title {
+body .app .list-posts .post-wrapper .post .post-title, body.mobile .app .list-posts .search-wrapper .post .post-title {
   font-size: x-large;
   font-weight: 400;
 }
-body .app .list-posts .post-wrapper .post .content .img-wrapper {
+body .app .list-posts .post-wrapper .post .content .img-wrapper, body.mobile .app .list-posts .search-wrapper .post .content .img-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,10 +158,10 @@ body .app .list-posts .post-wrapper .post .content .img-wrapper {
   height: 15rem;
   background: white;
 }
-body .app .list-posts .post-wrapper .post .content .img-wrapper img {
+body .app .list-posts .post-wrapper .post .content .img-wrapper img, body.mobile .app .list-posts .search-wrapper .post .content .img-wrapper img {
   max-height: 15rem;
 }
-body .app .list-posts .post-wrapper .post .content label.title {
+body .app .list-posts .post-wrapper .post .content label.title, body.mobile .app .list-posts .search-wrapper .post .content label.title {
   font-size: 1.5rem;
   font-weight: 500;
 }
@@ -199,8 +219,7 @@ body.mobile .header .menu {
   justify-content: space-between;
 }
 body.mobile .form-post {
-  padding: 1rem !important;
-  margin-bottom: 1rem;
+  padding: 0 1rem !important;
 }
 body.mobile .form-post .button-wrapper {
   margin-top: 0.5rem;
@@ -226,10 +245,38 @@ body.mobile .form-post .form-wrapper .flex.flex-col.flex-1 > .flex div {
   width: 100% !important;
   margin: 0 !important;
 }
+body.mobile .form-post .form-contact {
+  flex-direction: column;
+}
+body.mobile .form-post .form-contact .w-1\/3 {
+  width: 100%;
+  margin: 0 !important;
+}
+body.mobile .form-post .submit-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 body.mobile .list-posts {
   padding: 1rem !important;
 }
-body.mobile .list-posts .post-wrapper {
+body.mobile .list-posts .post-wrapper, body.mobile .list-posts .search-wrapper {
+  width: 100%;
+}
+body.mobile .section-title {
+  margin-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+body.mobile .search-wrapper {
+  width: 100% !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  flex-direction: column;
+}
+body.mobile .search-wrapper > * {
+  margin: 0 0 1rem !important;
+}
+body.mobile .search-wrapper .w-1\/3 {
   width: 100%;
 }
 

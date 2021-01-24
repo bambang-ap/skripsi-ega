@@ -12,7 +12,6 @@
 <?php
 
 require('config/connect.php');
-error_reporting(0);
 session_start();
 $user = $_SESSION['user'];
 if ($user) {

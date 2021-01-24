@@ -36,7 +36,7 @@ $isEditData = $data_edit;
 	<div class="app">
 		<form class="flex flex-col items-end form-post" method="POST" enctype="multipart/form-data" action="<?php echo $isEditData ? 'manage/edit-delete-post.php' : 'manage/add-post.php' ?>">
 			<div class="w-full">
-				<h2 class="pb-5">POST YOUR EVENT</h2>
+				<h2 class="pb-5 section-title">POST YOUR EVENT</h2>
 				<input name="id" value="<?php echo $data_edit['id']; ?>" class="none">
 				<?php
 				if ($_SESSION['uploadMessage'] && $_SESSION['uploadMessage'] !== '') { ?>
@@ -95,8 +95,9 @@ $isEditData = $data_edit;
 				<button class="btn btn-primary" type="submit"><?php echo $isEditData ? 'EDIT' : 'POST'; ?></button>
 			</div>
 		</form>
-		<h2 class="text-center pb-5">YOUR EVENTS</h2>
+		<h2 class="text-center pb-5 section-title">YOUR EVENTS</h2>
 		<?php
+		$canEdit = true;
 		require('components/post-content.php');
 		require('components/footer.php');
 		$_SESSION['uploadMessage'] = '';

@@ -23,8 +23,8 @@ $data_contact = $db->ExecuteAll('SELECT * FROM contact WHERE idOwner=? ORDER BY 
 	<div class="app">
 		<form class="flex form-post flex-col" method="POST" action="manage/add-contact.php">
 			<div>
-				<h2 class="pb-5">ADD CONTACT</h2>
-				<div class="flex mb-2">
+				<h2 class="pb-5 section-title">ADD CONTACT</h2>
+				<div class="flex mb-2 form-contact">
 					<div class="mr-1 w-1/3">
 						<label class="form-label">Name</label>
 						<input type="text" class="form-control" name="name" title="Name or alias" placeholder="e.g. Makmur Sukimin" required>
@@ -39,9 +39,9 @@ $data_contact = $db->ExecuteAll('SELECT * FROM contact WHERE idOwner=? ORDER BY 
 					</div>
 				</div>
 			</div>
-			<button class="btn btn-primary flex self-end" type="submit">ADD</button>
+			<button class="btn btn-primary submit-btn flex self-end" type="submit">ADD</button>
 		</form>
-		<h2 class="text-center pb-5">YOUR CONTACTS</h2>
+		<h2 class="text-center pb-5 section-title">YOUR CONTACTS</h2>
 		<?php
 			require('components/list-contact.php');
 			require('components/footer.php');

@@ -14,7 +14,6 @@
 require('config/connect.php');
 
 session_start();
-error_reporting(0);
 $user = $_SESSION['user'];
 if ($user) {
 	echo "<script>alert('Please logout to access this page.'); location.href = 'home.php';</script>";

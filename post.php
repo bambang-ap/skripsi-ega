@@ -1,25 +1,23 @@
 <!doctype html>
 <html lang="en" class="h-full">
 
-<?php
-
-error_reporting(0);
-
-session_start();
-
-include 'config/connect.php';
-
-$data = $db->Execute('SELECT * FROM eventData WHERE id=?', [$_GET['id']]);
-if (!$data) {
-	header('location: 404.php');
-}
-
-?>
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php require('components/imports.php'); ?>
+	<?php
 
+
+	session_start();
+
+	include 'config/connect.php';
+
+	$data = $db->Execute('SELECT * FROM eventData WHERE id=?', [$_GET['id']]);
+	if (!$data) {
+		header('location: 404.php');
+	}
+
+	?>
 	<!-- HTML Meta Tags -->
 	<title>SOUNDSEE.NET - <?php echo $data['eventName']; ?></title>
 	<meta name="description" content="<?php echo $data['eventDescription']; ?>">
@@ -43,7 +41,6 @@ if (!$data) {
 	<meta name="twitter:image" content="<?php echo 'post-file/' . $data['imagePath']; ?>">
 
 	<!-- Meta Tags Generated via http://heymeta.com -->
-	<?php require('components/imports.php'); ?>
 </head>
 
 <?php

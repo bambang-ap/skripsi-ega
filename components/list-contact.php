@@ -1,5 +1,4 @@
 <?php
-error_reporting(0);
 $isInContact = strpos($_SERVER['REQUEST_URI'], 'contact.php')
 ?>
 <script>
@@ -55,7 +54,7 @@ $isInContact = strpos($_SERVER['REQUEST_URI'], 'contact.php')
 			<div class="post justify-between items-center bg-light" onclick="openPopup(this)">
 				<div class="content">
 					<?php if ($isInContact) { ?>
-						<div class="editor none">
+						<div class="editor mr-2 none">
 							<div class="input-group mb-1" title="Name or alias">
 								<span class="input-group-text">Name</span>
 								<input type="text" class="form-control" name="data[<?php echo $i; ?>][name]" value="<?php echo $data['name']; ?>" placeholder="e.g. Makmur Sukimin">
@@ -78,8 +77,8 @@ $isInContact = strpos($_SERVER['REQUEST_URI'], 'contact.php')
 				</div>
 				<?php if ($isInContact) { ?>
 					<div class="flex flex-col">
-						<i onclick="edit('contact-<?php echo $data['id']; ?>')" class="pointer fa fa-edit mb-2"></i>
-						<label class="pointer" for="id-<?php echo $i; ?>"><i class="fa fa-trash"></i></label>
+						<i onclick="edit('contact-<?php echo $data['id']; ?>')" class="text-2xl pointer fa fa-edit mb-2"></i>
+						<label class="pointer" for="id-<?php echo $i; ?>"><i class="text-2xl fa fa-trash"></i></label>
 						<input class="none" id="id-<?php echo $i; ?>" type="checkbox" onclick="remove(this, '<?php echo $data['name']; ?>')" name="data[<?php echo $i; ?>][deleted]" />
 					</div>
 				<?php } ?>
