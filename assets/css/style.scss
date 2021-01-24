@@ -121,7 +121,6 @@ body {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		height: 100%;
 		.banner {
 			min-height: 500px;
 			background: {
@@ -179,6 +178,7 @@ body {
 			}
 			.img-wrapper {
 				position: relative;
+				width: 33.33%;
 				.icon-wrapper {
 					top: 0;
 					width: 100%;
@@ -201,6 +201,59 @@ body {
 					}
 				}
 			}
+		}
+	}
+}
+body.mobile {
+	.header {
+		flex-direction: column;
+		padding: 1rem;
+		.logo {
+			display: flex;
+			justify-content: center;
+			img {
+				height: auto;
+			}
+		}
+		.menu {
+			justify-content: space-between;
+		}
+	}
+	.form-post {
+		padding: 1rem !important;
+		margin-bottom: 1rem;
+		.button-wrapper {
+			margin-top: .5rem;
+			width: 100%;
+			.btn {
+				display: flex;
+				flex: 1;
+				justify-content: center;
+			}
+		}
+		.form-wrapper {
+			flex-direction: column;
+			// align-items: center;
+			.img-wrapper {
+				display: flex;
+				align-self: center;
+				width: 75%;
+			}
+			.flex.flex-col.flex-1 {
+				> .flex {
+					flex-direction: column;
+					div {
+						width: 100% !important;
+						margin: 0 !important;
+					}
+				}
+			}
+		}
+	}
+	.list-posts {
+		padding: 1rem !important;
+		.post-wrapper {
+			width: 100%;
 		}
 	}
 }

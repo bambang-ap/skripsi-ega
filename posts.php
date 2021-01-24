@@ -44,8 +44,8 @@ $isEditData = $data_edit;
 						<?php echo $_SESSION['uploadMessage']; ?>
 					</div>
 				<?php } ?>
-				<div class="flex mb-2">
-					<div class="w-1/3 mr-2 flex justify-center items-center img-wrapper">
+				<div class="flex mb-2 form-wrapper">
+					<div class="mr-2 flex justify-center items-center img-wrapper">
 						<input class="hidden" type="file" id="img-upload" accept="image/*" onchange="previewImage(this)" name="imgUpload" />
 						<img id="image-preview" src="<?php echo $isEditData ?  'post-file/' . $data_edit['imagePath'] : 'assets/images/thumb.png' ?>">
 						<div class="icon-wrapper" title="Image to become a thumbnail of your event">
@@ -88,7 +88,7 @@ $isEditData = $data_edit;
 					</div>
 				</div>
 			</div>
-			<div class="flex">
+			<div class="flex button-wrapper">
 				<?php if ($isEditData) { ?>
 					<a href="posts.php" class="btn btn-link" type="submit">CANCEL</a>
 				<?php } ?>

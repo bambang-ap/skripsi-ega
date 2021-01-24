@@ -101,7 +101,6 @@ body .app {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
 }
 body .app .banner {
   min-height: 500px;
@@ -161,6 +160,7 @@ body .app .form-post textarea {
 }
 body .app .form-post .img-wrapper {
   position: relative;
+  width: 33.33%;
 }
 body .app .form-post .img-wrapper .icon-wrapper {
   top: 0;
@@ -182,6 +182,55 @@ body .app .form-post .img-wrapper .icon-wrapper:hover {
 body .app .form-post .img-wrapper .icon-wrapper .icon {
   cursor: pointer;
   font-size: 2rem;
+}
+
+body.mobile .header {
+  flex-direction: column;
+  padding: 1rem;
+}
+body.mobile .header .logo {
+  display: flex;
+  justify-content: center;
+}
+body.mobile .header .logo img {
+  height: auto;
+}
+body.mobile .header .menu {
+  justify-content: space-between;
+}
+body.mobile .form-post {
+  padding: 1rem !important;
+  margin-bottom: 1rem;
+}
+body.mobile .form-post .button-wrapper {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+body.mobile .form-post .button-wrapper .btn {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+body.mobile .form-post .form-wrapper {
+  flex-direction: column;
+}
+body.mobile .form-post .form-wrapper .img-wrapper {
+  display: flex;
+  align-self: center;
+  width: 75%;
+}
+body.mobile .form-post .form-wrapper .flex.flex-col.flex-1 > .flex {
+  flex-direction: column;
+}
+body.mobile .form-post .form-wrapper .flex.flex-col.flex-1 > .flex div {
+  width: 100% !important;
+  margin: 0 !important;
+}
+body.mobile .list-posts {
+  padding: 1rem !important;
+}
+body.mobile .list-posts .post-wrapper {
+  width: 100%;
 }
 
 /*# sourceMappingURL=style.css.map */
