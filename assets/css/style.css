@@ -279,5 +279,26 @@ body.mobile .search-wrapper > * {
 body.mobile .search-wrapper .w-1\/3 {
   width: 100%;
 }
+body.mobile .post-detail .detail-event {
+  flex-direction: column;
+}
+body.mobile .post-detail .detail-event > div {
+  width: 100% !important;
+}
+body.mobile .post-detail .detail-event > div:nth-child(1) {
+  margin: 0 !important;
+}
+body.mobile .post-detail .card {
+  flex-direction: column !important;
+  align-items: revert;
+}
+body.mobile .post-detail .card .video {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+body.mobile .post-detail .card .video > * {
+  margin: 5px !important;
+  width: 50%;
+}
 
 /*# sourceMappingURL=style.css.map */

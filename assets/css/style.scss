@@ -304,4 +304,27 @@ body.mobile {
 			width: 100%;
 		}
 	}
+	.post-detail {
+		.detail-event {
+			flex-direction: column;
+			> div {
+				width: 100% !important;
+				&:nth-child(1) {
+					margin: 0 !important;
+				}
+			}
+		}
+		.card {
+			flex-direction: column !important;
+			align-items: revert;
+			.video {
+				width: 100%;
+				margin: .5rem 0;
+				> * {
+					margin: 5px !important;
+					width: 50%;
+				}
+			}
+		}
+	}
 }

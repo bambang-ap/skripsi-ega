@@ -108,8 +108,8 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 	?>
 	<div class="app">
 		<div class="list-posts post-detail flex-1 flex-col">
-			<h2 class="text-center pb-5 c-light"><?php echo $data['eventName']; ?></h2>
-			<div class="flex mb-3 flex-1">
+			<h2 class="text-center pb-5 section-title c-light"><?php echo $data['eventName']; ?></h2>
+			<div class="flex mb-3 flex-1 detail-event">
 				<div class="w-1/3 mr-5 flex justify-center items-start" style="max-height: 15rem;">
 					<img style="border-radius: 5px; max-height: 15rem;" src="<?php echo 'post-file/' . $data['imagePath']; ?>" />
 				</div>
@@ -122,7 +122,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 					<div>Posted : <i><?php echo $data['created']; ?></i></div>
 					<div class="mt-1">Event Time : <i><?php echo $data['eventTime']; ?></i></div>
 				</div>
-				<div class="flex">
+				<div class="flex video">
 					<?php if (!empty($data['youtubeLink'])) { ?>
 						<a class="btn btn-danger flex items-center ml-1 mr-1" href="<?php echo $data['youtubeLink']; ?>" target="_blank">
 							<i class="fa fa-youtube text-4xl"></i>

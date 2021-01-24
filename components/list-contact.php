@@ -27,13 +27,18 @@ $isInContact = strpos($_SERVER['REQUEST_URI'], 'contact.php')
 			var company = selector.find('.content div').html()
 			var dataSearch = [title, number, company].join('')
 			if (dataSearch.toLowerCase().includes($this.value.toLowerCase())) {
-				selector.show()
+				selector.parent().show()
 			} else {
-				selector.hide()
+				selector.parent().hide()
 			}
 			if ($this.value === '') selector.show()
 		})
 	}
+	$(document).ready(function() {
+		$('input[type=search]').on('search', function() {
+			searchContact($(this)[0])
+		})
+	})
 </script>
 <form id="popular" action="manage/edit-delete-contact.php" method="POST" class="list-posts">
 	<div class="flex w-full mb-3 justify-end items-center search-wrapper">
@@ -42,7 +47,7 @@ $isInContact = strpos($_SERVER['REQUEST_URI'], 'contact.php')
 		<?php } ?>
 		<div class="w-1/3 input-group ml-3">
 			<span class="input-group-text">Search</span>
-			<input type="text" onkeypress="if (event.key === 'Enter') event.preventDefault()" onkeyup="searchContact(this)" class="form-control" placeholder="Type here...">
+			<input type="search" onkeypress="if (event.key === 'Enter') event.preventDefault()" onkeyup="searchContact(this)" class="form-control" placeholder="Type here...">
 		</div>
 	</div>
 	<?php
