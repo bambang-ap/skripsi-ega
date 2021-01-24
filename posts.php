@@ -16,6 +16,9 @@ if (!$user) {
 	header('location: 404.php');
 }
 $data_post = $db->ExecuteAll('SELECT * FROM eventData WHERE idOwner=? ORDER BY created DESC', [$user['id']]);
+$data_edit = $db->Execute('SELECT * FROM eventData WHERE id=? AND idOwner=?', [$_GET['edit'], $user['id']]);
+$isEditData = $data_edit;
+
 ?>
 
 <body>
@@ -31,9 +34,10 @@ $data_post = $db->ExecuteAll('SELECT * FROM eventData WHERE idOwner=? ORDER BY c
 	</script>
 	<?php require('components/header.php'); ?>
 	<div class="app">
-		<form class="flex flex-col items-end form-post" method="POST" enctype="multipart/form-data" action="manage/add-post.php">
+		<form class="flex flex-col items-end form-post" method="POST" enctype="multipart/form-data" action="<?php echo $isEditData ? 'manage/edit-delete-post.php' : 'manage/add-post.php' ?>">
 			<div class="w-full">
 				<h2 class="pb-5">POST YOUR EVENT</h2>
+				<input name="id" value="<?php echo $data_edit['id']; ?>" class="none">
 				<?php
 				if ($_SESSION['uploadMessage'] && $_SESSION['uploadMessage'] !== '') { ?>
 					<div class="alert alert-<?php echo $_SESSION['uploadMessage'] === 'Success' ? 'success' : 'danger'; ?>" role="alert">
@@ -43,7 +47,7 @@ $data_post = $db->ExecuteAll('SELECT * FROM eventData WHERE idOwner=? ORDER BY c
 				<div class="flex mb-2">
 					<div class="w-1/3 mr-2 flex justify-center items-center img-wrapper">
 						<input class="hidden" type="file" id="img-upload" accept="image/*" onchange="previewImage(this)" name="imgUpload" />
-						<img id="image-preview" src="assets/images/img.png">
+						<img id="image-preview" src="<?php echo $isEditData ?  'post-file/' . $data_edit['imagePath'] : 'assets/images/thumb.png' ?>">
 						<div class="icon-wrapper" title="Image to become a thumbnail of your event">
 							<label for="img-upload"><i class="fa fa-edit icon"></i></label>
 						</div>
@@ -52,39 +56,44 @@ $data_post = $db->ExecuteAll('SELECT * FROM eventData WHERE idOwner=? ORDER BY c
 						<div class="flex">
 							<div class="w-1/2 mr-1" title="Your event name">
 								<label class="form-label">Event name</label>
-								<input type="text" class="form-control" name="eventName" placeholder="e.g. Cuci Gudang iPhone" />
+								<input type="text" class="form-control" name="eventName" value="<?php echo $data_edit['eventName']; ?>" placeholder="e.g. Cuci Gudang iPhone" required />
 							</div>
 							<div class="w-1/2 ml-1" title="The date of your event">
 								<label class="form-label">Event Date</label>
-								<input type="datetime-local" class="form-control" name="eventTime" />
+								<input type="datetime-local" class="form-control" name="eventTime" value="<?php echo formatDate($data_edit['eventTime']) ?>" required />
 							</div>
 						</div>
 						<div class="flex">
 							<div class="w-1/2 mr-1" title="Youtube link to describe your event by video. This field is optional">
 								<label class="form-label">Youtube link</label>
-								<input type="text" class="form-control" name="youtubeLink" placeholder="e.g. https://www.youtube.com/watch?v=-1Tkar1nLWQ" />
+								<input type="text" class="form-control" name="youtubeLink" value="<?php echo $data_edit['youtubeLink']; ?>" placeholder="e.g. https://www.youtube.com/watch?v=-1Tkar1nLWQ" />
 							</div>
 							<div class="w-1/2 ml-1" title="Instagram link to describe your event by video. This field is optional">
 								<label class="form-label">Instagram link</label>
-								<input type="text" class="form-control" name="instagramLink" placeholder="e.g. https://www.instagram.com/p/CJ-5ChUheMm" />
+								<input type="text" class="form-control" name="instagramLink" value="<?php echo $data_edit['instagramLink']; ?>" placeholder="e.g. https://www.instagram.com/p/CJ-5ChUheMm" />
 							</div>
 						</div>
 						<div class="flex">
 							<div class="w-1/2 mr-1" title="Twitter link to describe your event by video. This field is optional">
 								<label class="form-label">Twitter link</label>
-								<input type="text" class="form-control" name="twitterLink" placeholder="e.g. https://www.youtube.com/watch?v=-1Tkar1nLWQ" />
+								<input type="text" class="form-control" name="twitterLink" value="<?php echo $data_edit['twitterLink']; ?>" placeholder="e.g. https://www.youtube.com/watch?v=-1Tkar1nLWQ" />
 							</div>
 							<div class="w-1/2 ml-1" title="Facebook link to describe your event by video. This field is optional">
 								<label class="form-label">Facebook link</label>
-								<input type="text" class="form-control" name="facebookLink" placeholder="e.g. https://www.instagram.com/p/CJ-5ChUheMm" />
+								<input type="text" class="form-control" name="facebookLink" value="<?php echo $data_edit['facebookLink']; ?>" placeholder="e.g. https://www.instagram.com/p/CJ-5ChUheMm" />
 							</div>
 						</div>
 						<label class="form-label" title="Full description of your event">Event description</label>
-						<textarea class="h-full form-control" title="Full description of your event" name="eventDescription" placeholder="Type here..."></textarea>
+						<textarea class="h-full form-control" name="eventDescription" title="Full description of your event" placeholder="Type here..." required><?php echo $data_edit['eventDescription']; ?></textarea>
 					</div>
 				</div>
 			</div>
-			<button class="btn btn-primary" type="submit">POST</button>
+			<div class="flex">
+				<?php if ($isEditData) { ?>
+					<a href="posts.php" class="btn btn-link" type="submit">CANCEL</a>
+				<?php } ?>
+				<button class="btn btn-primary" type="submit"><?php echo $isEditData ? 'EDIT' : 'POST'; ?></button>
+			</div>
 		</form>
 		<h2 class="text-center pb-5">YOUR EVENTS</h2>
 		<?php

@@ -50,7 +50,6 @@ if (!$user) {
 		$eventDescription = $_POST['eventDescription'];
 		$now = date("Y-m-d H:i:s");
 		$db->Execute('INSERT INTO eventData (idOwner, eventName, youtubeLink, instagramLink, facebookLink, twitterLink, eventTime, eventDescription, created, imagePath) VALUES (?,?,?,?,?,?,?,?,?,?)', [$user['id'], $eventName, $youtubeLink, $instagramLink, $facebookLink, $twitterLink, $eventTime, $eventDescription, $now, $filename]);
-		// print_r($db->error());
 		$_SESSION['uploadMessage'] = 'Success';
 	} else {
 		$_SESSION['uploadMessage'] = 'There is no image choosed';

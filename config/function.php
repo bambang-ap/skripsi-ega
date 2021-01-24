@@ -64,3 +64,10 @@ function get_client_ip() {
 function gen_unique_share_identifier() {
 	return get_client_ip()." - ".$_SERVER['HTTP_USER_AGENT'];
 }
+function formatDate($date) {
+	$date = explode(' ', $date);
+	$time = explode(':', $date[1]);
+	$date = explode('-', $date[0]);
+	$dt = sprintf('%s-%s-%sT%s:%s', $date[0], $date[1], $date[2], $time[0], $time[1]);
+	return $dt;
+}
