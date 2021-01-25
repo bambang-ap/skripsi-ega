@@ -1,4 +1,5 @@
 <?php error_reporting(0); ?>
+<meta name="google-site-verification" content="2o4bzDZq0LP7nhfk7oxTb1U7c8yyoJVTRMGmy6QiLXE" />
 <link href="assets/images/favicon.png" rel="shortcut icon" type="image/png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
