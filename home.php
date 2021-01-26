@@ -20,11 +20,31 @@ $end_week = date("Y-m-d H:i:s", $end_week);
 
 $data_post = $db->ExecuteAll("SELECT eventData.*, user.name as nameUser, user.id as idUser FROM eventData JOIN user ON eventData.idOwner=user.id WHERE created > ? ORDER BY shared DESC, created DESC LIMIT 3", [$start_week]);
 
+$updated_post = $db->ExecuteAll("SELECT * FROM eventData WHERE created >= NOW() - INTERVAL 2 HOUR LIMIT 1");
+
 ?>
+<script>
+	$(document).ready(() => {
+		setTimeout(() => {
+			$('.popup-new-update').css('opacity', '1')
+		}, 500);
+	})
+
+	function hideNewUpdate() {
+		$('.popup-new-update').css('opacity', '0')
+	}
+</script>
 
 <body>
 	<?php require('components/header.php'); ?>
-	<div class="app">
+	<div class="app relative">
+		<?php if (count($updated_post) > 0) { ?>
+			<div class="popup-new-update">
+				<div><?php echo count($updated_post); ?> News updated</div>
+				<a class="mr-2 ml-2 btn btn-primary" href="all-posts.php?updated=true">Take a Look</a>
+				<i onclick="hideNewUpdate()" class="close-btn fa fa-times"></i>
+			</div>
+		<?php } ?>
 		<div class="banner"></div>
 		<h2 class="text-center section-title mt-5 pb-5">POPULAR THIS WEEK</h2>
 		<?php

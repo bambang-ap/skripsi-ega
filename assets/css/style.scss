@@ -1,5 +1,5 @@
 $bg: #ededed;
-$light: white;
+$light: #FFFFFF;
 $text: #54595e;
 $link: #54595e;
 $blue: #03b3ff;
@@ -73,6 +73,23 @@ body {
 		background: #1e1e1e;
 		color: #7a7a7a;
 	}
+	&.unauth {
+		background: {
+			image: linear-gradient(0deg, $light-tr, $light-tr), url('../images/bg.jpg');
+			size: cover;
+			position: center center;
+		}
+		.form-wrapper {
+			padding: 1rem;
+			form {
+				max-height: 85%;
+				background: transparentize($light, .2);
+				border-radius: 5px;
+				overflow: auto;
+				padding: 2rem;
+			}
+		}
+	}
 	.popup {
 		position: absolute;
 		z-index: 99;
@@ -110,10 +127,15 @@ body {
 		.logo img {
 			height: 5rem;
 		}
-		.menu a {
-			font-size: 1.5rem;
-			&.icon {
-				font-size: 2rem;
+		.menu {
+			display: flex;
+			width: 20%;
+			justify-content: space-between;
+			a {
+				font-size: 1.5rem;
+				&.icon {
+					font-size: 2rem;
+				}
 			}
 		}
 	}
@@ -124,6 +146,32 @@ body {
 		flex-direction: column;
 		justify-content: space-between;
 		overflow: auto;
+		.popup-new-update {
+			position: absolute;
+			top: 2.5rem;
+			background: $light;
+			border-radius: 5px;
+			padding: .5rem 1rem;
+			display: flex;
+			align-self: center;
+			justify-content: center;
+			align-items: center;
+			opacity: 0;
+			transition: .5s;
+			.close-btn {
+				position: absolute;
+				top: -2rem;
+				right: 0;
+				background: $light;
+				width: 1.5rem;
+				height: 1.5rem;
+				cursor: pointer;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 1rem;
+			}
+		}
 		.banner {
 			min-height: 500px;
 			background: {
@@ -236,7 +284,14 @@ body.mobile {
 			}
 		}
 		.menu {
+			margin-top: 1rem;
+			width: 100%;
 			justify-content: space-between;
+			> a {
+				display: flex;
+				justify-content: center;
+				width: 45%;
+			}
 		}
 	}
 	.form-post {

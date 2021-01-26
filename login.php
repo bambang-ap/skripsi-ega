@@ -35,8 +35,8 @@ if ($doLogin === 'on') {
 
 ?>
 
-<body class="h-full">
-	<div class="flex flex-col h-full justify-center items-center">
+<body class="h-full unauth">
+	<div class="form-wrapper flex flex-col h-full justify-center items-center">
 		<?php if (isset($alertType)) { ?>
 			<div class="alert alert-<?php echo $alertType ?>" role="alert">
 				<?php echo $alert; ?>
@@ -44,6 +44,7 @@ if ($doLogin === 'on') {
 		<?php } ?>
 		<form class="flex flex-col" method="POST" action="login.php">
 			<input type="checkbox" name="doLogin" checked class="hidden" />
+			<h2 class="mb-4">Login your account</h2>
 			<div class="input-group mb-3">
 				<span class="input-group">Username or Email</span>
 				<input type="text" name="username" class="form-control">
@@ -52,11 +53,8 @@ if ($doLogin === 'on') {
 				<span class="input-group">Password</span>
 				<input type="password" name="password" class="form-control">
 			</div>
-			<div class="flex justify-between">
-				<a href="register.php" class="flex flex-1 btn btn-primary">Register</a>
-				<div class="p-1"></div>
-				<button type="submit" class="flex flex-1 btn btn-primary">Login</button>
-			</div>
+			<button type="submit" class="flex flex-1 btn btn-primary justify-center">Login</button>
+			<label class="mt-2 text-center">Don't have an account? Register <a class="p-0 btn btn-link" href="register.php">here</a></label>
 		</form>
 	</div>
 </body>

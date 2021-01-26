@@ -53,8 +53,8 @@ if ($doRegister === 'on') {
 
 ?>
 
-<body class="h-full">
-	<div class="flex flex-col h-full justify-center items-center">
+<body class="h-full unauth">
+	<div class="flex form-wrapper flex-col h-full justify-center items-center">
 		<?php if (isset($alertType)) { ?>
 			<div class="alert alert-<?php echo $alertType ?>" role="alert">
 				<?php echo $alert; ?>
@@ -62,6 +62,7 @@ if ($doRegister === 'on') {
 		<?php } ?>
 		<form class="flex flex-col" method="POST" action="register.php">
 			<input type="checkbox" name="doRegister" checked class="hidden" />
+			<h2 class="mb-4">Register your account</h2>
 			<div class="input-group mb-3">
 				<span class="input-group">Username</span>
 				<input type="text" class="form-control" name="username" value="<?php echo $username; ?>" required />
@@ -91,9 +92,12 @@ if ($doRegister === 'on') {
 				<input type="password" class="form-control" name="confirmPassword" required />
 			</div>
 			<div class="flex justify-between">
-				<a href="login.php" class="flex flex-1 btn btn-primary">Login</a>
+				<a href="login.php" class="flex flex-1 justify-center items-center btn btn-outline">
+					<i class="fa text-primary fa-chevron-left pr-1"></i>
+					<label class="text-primary">Login</label>
+				</a>
 				<div class="p-1"></div>
-				<button type="submit" class="flex flex-1 btn btn-primary">Register</button>
+				<button type="submit" class="flex flex-1 justify-center btn btn-primary">Register</button>
 			</div>
 		</form>
 	</div>

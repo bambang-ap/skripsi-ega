@@ -23,15 +23,20 @@
 			<?php } ?>
 			<a href="post.php?id=<?php echo $data['id']; ?>" class="post flex-col bg-blue">
 				<?php if ($withOwner) { ?>
-					<label class="post-title">
+					<label class="post-title mb-2">
 						<?php echo $user['id'] === $data['idUser'] ? '<i>You</i>' : $data['nameUser']; ?>
 					</label>
 				<?php } ?>
 				<div class="content">
-					<div class="img-wrapper"><img class="" src="<?php echo 'post-file/' . $data['imagePath']; ?>"></div>
+					<div class="img-wrapper mb-2">
+						<img class="" src="<?php echo 'post-file/' . $data['imagePath']; ?>">
+					</div>
 					<div class="flex flex-col">
 						<label class="title">
 							<?php echo $data['eventName']; ?>
+						</label>
+						<label class="text-xs">
+							Created at <?php echo $data['created']; ?>
 						</label>
 						<label>
 							<?php

@@ -17,23 +17,23 @@ input[type=number] {
 }
 
 .bg-light {
-  background: white;
+  background: #FFFFFF;
 }
 .bg-blue {
   background: #03b3ff;
 }
 
 .c-light {
-  color: white;
+  color: #FFFFFF;
 }
 .c-light {
-  color: white;
+  color: #FFFFFF;
 }
 .c-light-hover {
-  color: white;
+  color: #FFFFFF;
 }
 .c-light-hover:hover {
-  color: white;
+  color: #FFFFFF;
 }
 .c-blue {
   color: #03b3ff;
@@ -54,6 +54,21 @@ body footer {
   padding: 2rem;
   background: #1e1e1e;
   color: #7a7a7a;
+}
+body.unauth {
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url("../images/bg.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+body.unauth .form-wrapper {
+  padding: 1rem;
+}
+body.unauth .form-wrapper form {
+  max-height: 85%;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  overflow: auto;
+  padding: 2rem;
 }
 body .popup {
   position: absolute;
@@ -91,6 +106,11 @@ body .header {
 body .header .logo img {
   height: 5rem;
 }
+body .header .menu {
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+}
 body .header .menu a {
   font-size: 1.5rem;
 }
@@ -104,6 +124,32 @@ body .app {
   flex-direction: column;
   justify-content: space-between;
   overflow: auto;
+}
+body .app .popup-new-update {
+  position: absolute;
+  top: 2.5rem;
+  background: #FFFFFF;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.5s;
+}
+body .app .popup-new-update .close-btn {
+  position: absolute;
+  top: -2rem;
+  right: 0;
+  background: #FFFFFF;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
 }
 body .app .banner {
   min-height: 500px;
@@ -134,7 +180,7 @@ body .app .list-posts .post-wrapper .open-edit, body.mobile .app .list-posts .se
 }
 body .app .list-posts .post-wrapper .open-edit .command, body.mobile .app .list-posts .search-wrapper .open-edit .command {
   overflow: hidden;
-  color: white;
+  color: #FFFFFF;
   border-radius: 5px;
   background: #215068;
 }
@@ -156,7 +202,7 @@ body .app .list-posts .post-wrapper .post .content .img-wrapper, body.mobile .ap
   justify-content: center;
   border-radius: 5px;
   height: 15rem;
-  background: white;
+  background: #FFFFFF;
 }
 body .app .list-posts .post-wrapper .post .content .img-wrapper img, body.mobile .app .list-posts .search-wrapper .post .content .img-wrapper img {
   max-height: 15rem;
@@ -216,7 +262,14 @@ body.mobile .header .logo img {
   height: auto;
 }
 body.mobile .header .menu {
+  margin-top: 1rem;
+  width: 100%;
   justify-content: space-between;
+}
+body.mobile .header .menu > a {
+  display: flex;
+  justify-content: center;
+  width: 45%;
 }
 body.mobile .form-post {
   padding: 0 1rem !important;
