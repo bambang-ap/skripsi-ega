@@ -66,8 +66,8 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 	function openPopup($this) {
 		if ($this) {
 			$('.list-posts .show-bookmark').hide()
-			$($this).find('.show-bookmark').css("display", "flex")
 			$('.popup').css('display', 'none')
+			$($this).find('.show-bookmark').css("display", "flex")
 			var url = $($this).find('h4').text()
 			share(window.ref.replace('{number}', url), true)
 		} else {
