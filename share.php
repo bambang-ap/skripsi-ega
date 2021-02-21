@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require('config/connect.php');
 
 $link = base64_decode($_GET['link']);
@@ -10,8 +10,6 @@ $ref = str_replace('{sharer}', $link, $ref);
 
 $data = $db->Execute('SELECT * FROM sharer WHERE id=?', [$from]);
 $eventData = $db->Execute('SELECT * FROM eventData WHERE id=?', [$id]);
-
-// print_r($ref);
 
 if ($eventData) {
 	$ids = [];

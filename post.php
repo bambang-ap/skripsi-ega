@@ -65,6 +65,8 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 
 	function openPopup($this) {
 		if ($this) {
+			$('.list-posts .show-bookmark').hide()
+			$($this).find('.show-bookmark').css("display", "flex")
 			$('.popup').css('display', 'none')
 			var url = $($this).find('h4').text()
 			share(window.ref.replace('{number}', url), true)
@@ -85,7 +87,6 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 			}
 		} else {
 			var link = isWa ? btoa(`Halo Sobat soundsee !!%0a%0aKita ada event menarik ni %0asayang untuk di lewatkan%0a%0auntuk informasi lebih detailnya%0aSilahkan klik : <? echo $actual_link; ?> ( soundsee official )%0adan jangan lupa untuk share ke teman-teman kalian.`) : '<? echo base64_encode($actual_link); ?>'
-			// console.log(link)
 			window.open(`share.php?link=${link}&id=<?php echo $_GET['id']; ?>&from=<?php echo base64_encode($identifier); ?>&ref=${ref}`, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
 		}
 		return false

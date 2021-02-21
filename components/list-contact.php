@@ -74,10 +74,17 @@ $isInContact = strpos($_SERVER['REQUEST_URI'], 'contact.php')
 							</div>
 						</div>
 					<?php } ?>
-					<div class="viewer">
-						<h3><?php echo $data['name']; ?></h3>
-						<h4><?php echo $data['phoneNumber']; ?></h4>
-						<div><?php echo $data['companyName']; ?></div>
+					<div class="viewer <?php echo $isInContact ? "" : "flex"; ?>">
+						<div class="flex flex-col flex-1">
+							<h3><?php echo $data['name']; ?></h3>
+							<h4><?php echo $data['phoneNumber']; ?></h4>
+							<div><?php echo $data['companyName']; ?></div>
+						</div>
+						<?php if (!$isInContact) { ?>
+							<div class="flex show-bookmark none items-center">
+								<i class="fa fa-bookmark"></i>
+							</div>
+						<?php } ?>
 					</div>
 				</div>
 				<?php if ($isInContact) { ?>
