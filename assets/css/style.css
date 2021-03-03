@@ -348,10 +348,13 @@ body.mobile .post-detail .card {
 body.mobile .post-detail .card .video {
   width: 100%;
   margin: 0.5rem 0;
+  flex-direction: column;
 }
 body.mobile .post-detail .card .video > * {
   margin: 5px !important;
   width: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=style.css.map */

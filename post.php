@@ -118,34 +118,36 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 					<p class="c-light text-justify"><?php echo $data['eventDescription']; ?></p>
 				</div>
 			</div>
-			<div class="card flex-row p-3 justify-between items-center">
+			<div class="card flex-row p-3 details justify-between items-center">
 				<div>
 					<div>Posted : <i><?php echo $data['created']; ?></i></div>
 					<div class="mt-1">Event Time : <i><?php echo $data['eventTime']; ?></i></div>
 				</div>
-				<div class="flex video">
+				<div class="flex items-center video">
+					<label class="text-xl mr-2">View more on</label>
 					<?php if (!empty($data['youtubeLink'])) { ?>
 						<a class="btn btn-danger flex items-center ml-1 mr-1" href="<?php echo $data['youtubeLink']; ?>" target="_blank">
 							<i class="fa fa-youtube text-4xl"></i>
-							<label class="text-xl ml-2">View</label>
 						</a>
 					<?php } ?>
 					<?php if (!empty($data['instagramLink'])) { ?>
 						<a class="btn btn-primary flex items-center ml-1 mr-1" href="<?php echo $data['instagramLink']; ?>" target="_blank">
 							<i class="fa fa-instagram text-4xl"></i>
-							<label class="text-xl ml-2">View</label>
 						</a>
 					<?php } ?>
 					<?php if (!empty($data['twitterLink'])) { ?>
-						<a class="btn btn-danger flex items-center ml-1 mr-1" href="<?php echo $data['twitterLink']; ?>" target="_blank">
-							<i class="fa fa-twitter text-4xl"></i>
-							<label class="text-xl ml-2">View</label>
+						<a class="btn btn-info flex items-center ml-1 mr-1" href="<?php echo $data['twitterLink']; ?>" target="_blank">
+							<i class="fa fa-twitter text-white text-4xl"></i>
 						</a>
 					<?php } ?>
 					<?php if (!empty($data['facebookLink'])) { ?>
 						<a class="btn btn-primary flex items-center ml-1 mr-1" href="<?php echo $data['facebookLink']; ?>" target="_blank">
 							<i class="fa fa-facebook text-4xl"></i>
-							<label class="text-xl ml-2">View</label>
+						</a>
+					<?php } ?>
+					<?php if (!empty($data['url'])) { ?>
+						<a class="btn btn-warning flex items-center ml-1 mr-1" href="<?php echo $data['url']; ?>" target="_blank">
+							<i class="fa fa-link text-white text-4xl"></i>
 						</a>
 					<?php } ?>
 				</div>

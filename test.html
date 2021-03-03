@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/cheerio/1.0.0-rc.5/index.js"
+			integrity="sha512-yuXnRYW2mQ6iDF9dU1EbnIjqxVKRqhjjtz/xbYtz5dWKNjHRHBbOk3+MsLNyXhbXv+4zwnEb3BU/wcirtmcszQ=="
+			crossorigin="anonymous"></script>
+		<title>Document</title>
+		<script>
+			(function () {
+				async function loadGraphicCards(page = 1) {
+					console.log(45678)
+					const searchUrl = `https://genshin-impact.fandom.com/wiki/Characters`;
+					const response = await fetch(searchUrl);  // fetch page 
+
+					const htmlString = await response.text(); // get response text
+					// const $ = cheerioModule.load(htmlString);       // parse HTML string
+					const d = $(".article-table")
+					// 	// .map((_, element) => {
+					// 	// 	return element.children
+					// 	// })
+					console.log(d)
+				}
+				loadGraphicCards()
+			})()
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+
+</html>

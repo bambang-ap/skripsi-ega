@@ -66,22 +66,26 @@ $isEditData = $data_edit;
 						<div class="flex">
 							<div class="w-1/2 mr-1" title="Youtube link to describe your event by video. This field is optional">
 								<label class="form-label">Youtube link</label>
-								<input type="text" class="form-control" name="youtubeLink" value="<?php echo $data_edit['youtubeLink']; ?>" placeholder="e.g. https://www.youtube.com/watch?v=-1Tkar1nLWQ" />
+								<input type="url" class="form-control" name="youtubeLink" value="<?php echo $data_edit['youtubeLink']; ?>" placeholder="e.g. https://www.youtube.com/watch?v=-1Tkar1nLWQ" />
 							</div>
 							<div class="w-1/2 ml-1" title="Instagram link to describe your event by video. This field is optional">
 								<label class="form-label">Instagram link</label>
-								<input type="text" class="form-control" name="instagramLink" value="<?php echo $data_edit['instagramLink']; ?>" placeholder="e.g. https://www.instagram.com/p/CJ-5ChUheMm" />
+								<input type="url" class="form-control" name="instagramLink" value="<?php echo $data_edit['instagramLink']; ?>" placeholder="e.g. https://www.instagram.com/p/CJ-5ChUheMm" />
 							</div>
 						</div>
 						<div class="flex">
 							<div class="w-1/2 mr-1" title="Twitter link to describe your event by video. This field is optional">
 								<label class="form-label">Twitter link</label>
-								<input type="text" class="form-control" name="twitterLink" value="<?php echo $data_edit['twitterLink']; ?>" placeholder="e.g. https://www.youtube.com/watch?v=-1Tkar1nLWQ" />
+								<input type="url" class="form-control" name="twitterLink" value="<?php echo $data_edit['twitterLink']; ?>" placeholder="e.g. https://www.youtube.com/watch?v=-1Tkar1nLWQ" />
 							</div>
 							<div class="w-1/2 ml-1" title="Facebook link to describe your event by video. This field is optional">
 								<label class="form-label">Facebook link</label>
-								<input type="text" class="form-control" name="facebookLink" value="<?php echo $data_edit['facebookLink']; ?>" placeholder="e.g. https://www.instagram.com/p/CJ-5ChUheMm" />
+								<input type="url" class="form-control" name="facebookLink" value="<?php echo $data_edit['facebookLink']; ?>" placeholder="e.g. https://www.instagram.com/p/CJ-5ChUheMm" />
 							</div>
+						</div>
+						<div class="w-full ml-1" title="Facebook link to describe your event by video. This field is optional">
+							<label class="form-label">Global url</label>
+							<input type="url" class="form-control" name="url" value="<?php echo $data_edit['url']; ?>" placeholder="e.g. https://google.com" />
 						</div>
 						<label class="form-label" title="Full description of your event">Event description</label>
 						<textarea class="h-full form-control" name="eventDescription" title="Full description of your event" placeholder="Type here..." required><?php echo $data_edit['eventDescription']; ?></textarea>

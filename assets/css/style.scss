@@ -375,9 +375,12 @@ body.mobile {
 			.video {
 				width: 100%;
 				margin: .5rem 0;
+				flex-direction: column;
 				> * {
 					margin: 5px !important;
 					width: 50%;
+					display: flex;
+					justify-content: center;
 				}
 			}
 		}

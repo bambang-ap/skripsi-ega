@@ -48,8 +48,9 @@ if (!$user) {
 		$facebookLink = $_POST['facebookLink'];
 		$eventTime = $_POST['eventTime'];
 		$eventDescription = $_POST['eventDescription'];
+		$url = $_POST['url'];
 		$now = date("Y-m-d H:i:s");
-		$db->Execute('INSERT INTO eventData (idOwner, eventName, youtubeLink, instagramLink, facebookLink, twitterLink, eventTime, eventDescription, created, imagePath) VALUES (?,?,?,?,?,?,?,?,?,?)', [$user['id'], $eventName, $youtubeLink, $instagramLink, $facebookLink, $twitterLink, $eventTime, $eventDescription, $now, $filename]);
+		$db->Execute('INSERT INTO eventData (url, idOwner, eventName, youtubeLink, instagramLink, facebookLink, twitterLink, eventTime, eventDescription, created, imagePath) VALUES (?,?,?,?,?,?,?,?,?,?,?)', [$url, $user['id'], $eventName, $youtubeLink, $instagramLink, $facebookLink, $twitterLink, $eventTime, $eventDescription, $now, $filename]);
 		$_SESSION['uploadMessage'] = 'Success';
 	} else {
 		$_SESSION['uploadMessage'] = 'There is no image choosed';
