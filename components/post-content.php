@@ -2,7 +2,7 @@
 	$(document).ready(() => {
 		var openEdit = $('.open-edit')
 		openEdit.each(index => {
-			$(openEdit[index]).find('.pointer').on('click', function() {
+			$(openEdit[index]).find('.fa-chevron-down').on('click', function() {
 				$(this).parent().find('.command').toggleClass('w-0')
 			})
 		})
@@ -11,7 +11,7 @@
 <div id="popular" class="list-posts">
 	<?php for ($i = 0; $i < count($data_post); $i++) {
 		$data = $data_post[$i]; ?>
-		<div class="post-wrapper relative">
+		<div class="post-wrapper pointer relative">
 			<?php if ($canEdit) { ?>
 				<div class="absolute open-edit">
 					<i class="text-2xl fa fa-chevron-down pointer"></i>
@@ -32,13 +32,13 @@
 						<img class="" src="<?php echo 'post-file/' . $data['imagePath']; ?>">
 					</div>
 					<div class="flex flex-col">
-						<label class="title">
+						<label class="title pointer">
 							<?php echo $data['eventName']; ?>
 						</label>
-						<label class="text-xs">
+						<label class="text-xs pointer">
 							Created at <?php echo $data['created']; ?>
 						</label>
-						<label>
+						<label class="pointer">
 							<?php
 							$desc = $data['eventDescription'];
 							$desc = strlen($desc) > 30 ? substr($desc, 0, 30) . '...' : $desc;

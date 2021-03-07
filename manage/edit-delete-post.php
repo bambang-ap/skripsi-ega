@@ -13,7 +13,6 @@ if (!$user) {
 	$_POST['idOwner'] = $user['id'];
 	$_GET['idOwner'] = $user['id'];
 	if ($_POST['id']) { // Edit
-		print_r($_FILES);
 		$id = $_POST['id'];
 		$eventName = $_POST['eventName'];
 		$eventTime = $_POST['eventTime'];
@@ -22,6 +21,7 @@ if (!$user) {
 		$twitterLink = $_POST['twitterLink'];
 		$facebookLink = $_POST['facebookLink'];
 		$eventDescription = $_POST['eventDescription'];
+		$url = $_POST["url"];
 		$idOwner = $_POST['idOwner'];
 		$file = $_FILES["imgUpload"];
 		if ($file['size'] > 0) {
@@ -58,7 +58,7 @@ if (!$user) {
 			}
 			$uploadImage = $uploadOk === 1 ? move_uploaded_file($file["tmp_name"], $target_file) : false;
 			if ($uploadOk === 1 && $uploadImage) {
-				$db->Execute('UPDATE eventData SET imagePath=?, eventName=?, eventTime=?, youtubeLink=?, instagramLink=?, twitterLink=?, facebookLink=?, eventDescription=? WHERE id=? AND idOwner=?', [$filename, $eventName, $eventTime, $youtubeLink, $instagramLink, $twitterLink, $facebookLink, $eventDescription, $id, $idOwner]);
+				$db->Execute('UPDATE eventData SET url=?, imagePath=?, eventName=?, eventTime=?, youtubeLink=?, instagramLink=?, twitterLink=?, facebookLink=?, eventDescription=? WHERE id=? AND idOwner=?', [$url, $filename, $eventName, $eventTime, $youtubeLink, $instagramLink, $twitterLink, $facebookLink, $eventDescription, $id, $idOwner]);
 				$err = $db->error();
 				if ($err[2]) {
 					echo "<script>alert(\"" . $err[2] . "\")</script>";
@@ -67,7 +67,7 @@ if (!$user) {
 				}
 			}
 		} else {
-			$db->Execute('UPDATE eventData SET eventName=?, eventTime=?, youtubeLink=?, instagramLink=?, twitterLink=?, facebookLink=?, eventDescription=? WHERE id=? AND idOwner=?', [$eventName, $eventTime, $youtubeLink, $instagramLink, $twitterLink, $facebookLink, $eventDescription, $id, $idOwner]);
+			$db->Execute('UPDATE eventData SET url=?, eventName=?, eventTime=?, youtubeLink=?, instagramLink=?, twitterLink=?, facebookLink=?, eventDescription=? WHERE id=? AND idOwner=?', [$url, $eventName, $eventTime, $youtubeLink, $instagramLink, $twitterLink, $facebookLink, $eventDescription, $id, $idOwner]);
 			$err = $db->error();
 			if ($err[2]) {
 				echo "<script>alert(\"" . $err[2] . "\")</script>";
@@ -84,6 +84,7 @@ if (!$user) {
 			echo "<script>alert('Delete success')</script>";
 		}
 	}
+	// print_r($db->error());
 	header('location: ../posts.php');
 }
 
