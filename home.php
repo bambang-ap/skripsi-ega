@@ -12,6 +12,8 @@
 include 'config/connect.php';
 session_start();
 
+$user = $_SESSION['user'];
+
 $previous_week = strtotime("today");
 $start_week = strtotime("last monday", $previous_week);
 $end_week = strtotime("next monday", $start_week);
@@ -37,6 +39,7 @@ $updated_post = $db->ExecuteAll("SELECT * FROM eventData WHERE created >= NOW() 
 
 <body>
 	<?php require('components/header.php'); ?>
+	<?php if ($user) { ?><marquee class="scroll-text">Diharapkan bagi para user untuk mengganti id , dan password secara berkala</marquee><?php } ?>
 	<div class="app relative">
 		<?php if (count($updated_post) > 0) { ?>
 			<div class="popup-new-update">

@@ -1,3 +1,4 @@
+<pre>
 <?php
 include '../config/connect.php';
 
@@ -14,6 +15,8 @@ if (!$user) {
 	$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 	$target_file = $target_dir . basename(uuid() . '.' . $imageFileType);
 	$filename = str_replace($target_dir, '', $target_file);
+	$fileSize = $file["size"];
+	$maxSize = 500000;
 	if (isset($_POST["submit"])) {
 		$check = getimagesize($file["tmp_name"]);
 		if ($check !== false) {
@@ -28,8 +31,10 @@ if (!$user) {
 		$_SESSION['uploadMessage'] = "Sorry, file already exists.";
 		$uploadOk = 0;
 	}
-	if ($file["size"] > 500000) {
-		$_SESSION['uploadMessage'] = "Sorry, your file is too large.";
+	if ($fileSize > $maxSize) {
+		$inMb = number_format($maxSize / 1000000, 2, ".", "");
+		$fileSize = number_format($fileSize / 1000000, 2, ".", "");
+		$_SESSION['uploadMessage'] = "Sorry, your file is $fileSize MB. Max size is $inMb MB";
 		$uploadOk = 0;
 	}
 	if (
@@ -51,9 +56,7 @@ if (!$user) {
 		$url = $_POST['url'];
 		$now = date("Y-m-d H:i:s");
 		$db->Execute('INSERT INTO eventData (url, idOwner, eventName, youtubeLink, instagramLink, facebookLink, twitterLink, eventTime, eventDescription, created, imagePath) VALUES (?,?,?,?,?,?,?,?,?,?,?)', [$url, $user['id'], $eventName, $youtubeLink, $instagramLink, $facebookLink, $twitterLink, $eventTime, $eventDescription, $now, $filename]);
-		$_SESSION['uploadMessage'] = 'Success';
-	} else {
-		$_SESSION['uploadMessage'] = 'There is no image choosed';
+		$_SESSION['uploadMessage'] = 'Post event success';
 	}
 	header('location: ../posts.php');
 }

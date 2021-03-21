@@ -88,7 +88,7 @@ $isEditData = $data_edit;
 							<input type="url" class="form-control" name="url" value="<?php echo $data_edit['url']; ?>" placeholder="e.g. https://google.com" />
 						</div>
 						<label class="form-label" title="Full description of your event">Event description</label>
-						<textarea class="h-full form-control" name="eventDescription" title="Full description of your event" placeholder="Type here..." required><?php echo $data_edit['eventDescription']; ?></textarea>
+						<textarea class="form-control" name="eventDescription" title="Full description of your event" placeholder="Type here..." required><?php echo $data_edit['eventDescription']; ?></textarea>
 					</div>
 				</div>
 			</div>

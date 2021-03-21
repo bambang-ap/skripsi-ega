@@ -90,6 +90,14 @@ body {
 			}
 		}
 	}
+	.scroll-text {
+		padding: 10px;
+    background: $blue;
+		color: $light;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+	}
 	.popup {
 		position: absolute;
 		z-index: 99;
@@ -156,7 +164,7 @@ body {
 						align-items: center;
 						white-space: nowrap;
 						.fa {
-							width: 35px;
+							width: 30px;
 						}
 					}
 				}
@@ -266,7 +274,8 @@ body {
 			background: revert;
 			justify-content: flex-end;
 			textarea {
-				resize: none;
+				min-height: 3rem * 3;
+				max-height: 3rem * 10;
 			}
 			.img-wrapper {
 				position: relative;
@@ -298,6 +307,9 @@ body {
 }
 body.mobile {
 	overflow: auto;
+	.scroll-text {
+		padding: 20px;
+	}
 	.app {
 		overflow: unset;
 		height: unset;
@@ -308,6 +320,8 @@ body.mobile {
 		.logo {
 			display: flex;
 			justify-content: center;
+			align-self: center;
+			width: 50%;
 			img {
 				height: auto;
 			}
@@ -316,6 +330,9 @@ body.mobile {
 			margin-top: 1rem;
 			width: 100%;
 			justify-content: space-between;
+			a {
+				font-size: 1rem;
+			}
 			> a {
 				display: flex;
 				justify-content: center;

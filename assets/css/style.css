@@ -70,6 +70,14 @@ body.unauth .form-wrapper form {
   overflow: auto;
   padding: 2rem;
 }
+body .scroll-text {
+  padding: 10px;
+  background: #03b3ff;
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
 body .popup {
   position: absolute;
   z-index: 99;
@@ -137,7 +145,7 @@ body .header .menu .account-btn .account-menu .btn {
   white-space: nowrap;
 }
 body .header .menu .account-btn .account-menu .btn .fa {
-  width: 35px;
+  width: 30px;
 }
 body .app {
   height: 100%;
@@ -244,7 +252,8 @@ body .app .form-post {
   justify-content: flex-end;
 }
 body .app .form-post textarea {
-  resize: none;
+  min-height: 9rem;
+  max-height: 30rem;
 }
 body .app .form-post .img-wrapper {
   position: relative;
@@ -275,6 +284,9 @@ body .app .form-post .img-wrapper .icon-wrapper .icon {
 body.mobile {
   overflow: auto;
 }
+body.mobile .scroll-text {
+  padding: 20px;
+}
 body.mobile .app {
   overflow: unset;
   height: unset;
@@ -286,6 +298,8 @@ body.mobile .header {
 body.mobile .header .logo {
   display: flex;
   justify-content: center;
+  align-self: center;
+  width: 50%;
 }
 body.mobile .header .logo img {
   height: auto;
@@ -294,6 +308,9 @@ body.mobile .header .menu {
   margin-top: 1rem;
   width: 100%;
   justify-content: space-between;
+}
+body.mobile .header .menu a {
+  font-size: 1rem;
 }
 body.mobile .header .menu > a {
   display: flex;
