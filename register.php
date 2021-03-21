@@ -69,7 +69,7 @@ if ($doRegister === 'on') {
 			</div>
 			<div class="input-group mb-3">
 				<span class="input-group">Phone number</span>
-				<input type="text" class="form-control" name="phoneNumber" value="<?php echo $phoneNumber; ?>" required />
+				<input type="number" class="form-control" name="phoneNumber" value="<?php echo $phoneNumber; ?>" required />
 			</div>
 			<div class="input-group mb-3">
 				<span class="input-group">First Name</span>
