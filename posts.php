@@ -24,11 +24,18 @@ $isEditData = $data_edit;
 <body>
 	<script>
 		function previewImage($this) {
-			// document.getElementById("image-preview").style.display = "block"
-			var oFReader = new FileReader()
-			oFReader.readAsDataURL($this.files[0])
-			oFReader.onload = function(oFREvent) {
-				document.getElementById("image-preview").src = oFREvent.target.result;
+			const input = $($this)
+			if ($this?.files?.length > 0) {
+				if (($this?.files[0]?.size ?? 0) / 1000000 <= 5) {
+					var oFReader = new FileReader()
+					oFReader.readAsDataURL($this.files[0])
+					oFReader.onload = function(oFREvent) {
+						document.getElementById("image-preview").src = oFREvent.target.result;
+					}
+				} else {
+					alert('File is over 5 MB')
+					input.replaceWith(input.val('').clone(true))
+				}
 			}
 		}
 	</script>
