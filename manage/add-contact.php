@@ -11,7 +11,12 @@ if (!$user) {
 	$phoneNumber = $_POST['phoneNumber'];
 	$companyName = $_POST['companyName'];
 
-	$db->Execute('INSERT INTO contact (idOwner, name, phoneNumber, companyName) VALUES (?,?,?,?)', [$user['id'], $name, $phoneNumber,	$companyName]);
+	$check = $db->Execute('SELECT * FROM contact WHERE idOwner=? AND phoneNumber=?', [$user['id'], $phoneNumber]);
+	if ($check) {
+		$_SESSION['contactAddMessage'] = 'Phone number is duplicate';
+	} else {
+		$db->Execute('INSERT INTO contact (idOwner, name, phoneNumber, companyName) VALUES (?,?,?,?)', [$user['id'], $name, $phoneNumber,	$companyName]);
+		$_SESSION['contactAddMessage'] = 'Success';
+	}
 	header('location: ../contact.php');
-
 }

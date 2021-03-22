@@ -15,15 +15,21 @@ $user = $_SESSION['user'];
 if (!$user) {
 	header('location: 404.php');
 }
+$message = $_SESSION['contactAddMessage'];
 $data_contact = $db->ExecuteAll('SELECT * FROM contact WHERE idOwner=? ORDER BY name ASC', [$user['id']]);
 ?>
 
 <body>
-	<?php require('components/header.php');?>
+	<?php require('components/header.php'); ?>
 	<div class="app">
 		<form class="flex form-post flex-col" method="POST" action="manage/add-contact.php">
 			<div>
 				<h2 class="pb-5 section-title">ADD CONTACT</h2>
+				<?php if ($message) { ?>
+					<div class="alert alert-<?php echo $message === 'Success' ? 'success' : 'danger'; ?>" role="alert">
+						<?php echo $message; ?>
+					</div>
+				<?php } ?>
 				<div class="flex mb-2 form-contact">
 					<div class="mr-1 w-1/3">
 						<label class="form-label">Name</label>
@@ -43,8 +49,9 @@ $data_contact = $db->ExecuteAll('SELECT * FROM contact WHERE idOwner=? ORDER BY 
 		</form>
 		<h2 class="text-center pb-5 section-title">YOUR CONTACTS</h2>
 		<?php
-			require('components/list-contact.php');
-			require('components/footer.php');
+		require('components/list-contact.php');
+		require('components/footer.php');
+		$_SESSION['contactAddMessage'] = null;
 		?>
 	</div>
 </body>
